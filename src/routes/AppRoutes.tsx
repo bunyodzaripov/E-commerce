@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, NotFound } from "@/pages";
-import { Paths } from "../components/common/Paths";
+import { Home, NotFound } from "../pages";
+import { PATHS } from "../components/common/paths";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={Paths.HOME} element={<Home />} />
+      <Route path={PATHS.HOME} element={<Home />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

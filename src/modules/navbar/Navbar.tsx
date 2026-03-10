@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Menu, ShoppingCart, User, Search } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
-import { Container, Paths } from "@/components";
+import { Container, PATHS } from "@/components";
 // import { useCartStore } from "@/store/cartStore";
 import NavBanner from "./NavBanner";
 import NavLinks from "./NavLinks";
@@ -28,7 +28,7 @@ const Navbar = () => {
               {/* Mobile Header */}
               <div className="px-4 py-4 border-b border-gray-100">
                 <Link
-                  to={Paths.HOME}
+                  to={PATHS.HOME}
                   className="font-display font-bold text-xl text-black"
                 >
                   SHOP.CO
@@ -51,7 +51,7 @@ const Navbar = () => {
                 {["Shop", "On Sale", "New Arrivals", "Brands"].map((link) => (
                   <Link
                     key={link}
-                    to={Paths.SHOP}
+                    to={PATHS.SHOP}
                     className="text-black font-medium text-base py-3 border-b border-gray-100 hover:opacity-70 transition-opacity"
                   >
                     {link}
@@ -62,7 +62,7 @@ const Navbar = () => {
               {/* Mobile Actions */}
               <div className="mt-auto px-4 py-6 flex gap-4 border-t border-gray-100">
                 <Link
-                  to={Paths.CART}
+                  to={PATHS.CART}
                   className="flex items-center gap-2 text-black font-medium"
                 >
                   <ShoppingCart size={20} />
@@ -81,7 +81,7 @@ const Navbar = () => {
             </SheetContent>
           </Sheet>
 
-          <Link to={Paths.HOME} className="shrink-0">
+          <Link to={PATHS.HOME} className="shrink-0">
             <img src={Logo} alt="logo" className="h-16 w-auto" />
           </Link>
 
