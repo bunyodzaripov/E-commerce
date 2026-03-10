@@ -1,8 +1,9 @@
-const PATHS = {
+export const PATHS = {
   HOME: "/",
   SHOP: "/shop",
   PRODUCT: "/product/:id",
   CART: "/cart",
 } as const;
 
-export default PATHS;
+// Helper — product ID bilan link yasash
+export const getProductPath = (id: number) => `/product/${id}`;
