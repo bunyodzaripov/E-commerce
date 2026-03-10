@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { PATHS } from "@/components";
+import { Paths } from "@/components";
 
 const categories = [
   "men's clothing",
@@ -26,7 +26,7 @@ const NavLinks = () => {
           {categories.map((cat) => (
             <DropdownMenuItem key={cat} className="p-0">
               <Link
-                to={`${PATHS.SHOP}?category=${cat}`}
+                to={`${Paths.SHOP}?category=${cat}`}
                 className="w-full px-2 py-1.5 capitalize cursor-pointer"
               >
                 {cat}
@@ -37,19 +37,19 @@ const NavLinks = () => {
       </DropdownMenu>
 
       <Link
-        to={PATHS.SHOP}
+        to={Paths.SHOP}
         className="text-black font-medium hover:opacity-70 transition-opacity"
       >
         On Sale
       </Link>
       <Link
-        to={PATHS.SHOP}
+        to={Paths.SHOP}
         className="text-black font-medium hover:opacity-70 transition-opacity"
       >
         New Arrivals
       </Link>
       <Link
-        to={PATHS.SHOP}
+        to={Paths.SHOP}
         className="text-black font-medium hover:opacity-70 transition-opacity"
       >
         Brands
