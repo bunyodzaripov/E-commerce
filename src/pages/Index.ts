@@ -1,4 +1,4 @@
-import NotFound from "./NotFound";
-import Home from "./Home";
+import { default as NotFound } from "./NotFound";
+import { default as Home } from "./Home";
 
 export { NotFound, Home };
