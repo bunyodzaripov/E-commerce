@@ -1,17 +1,16 @@
-import { ButtonDemo } from "@/components/common/Button";
+import { Loading } from "@/components";
 import { useProducts } from "@/hooks/useProducts";
-import { Navbar } from "@/components";
+import Navbar from "@/modules/navbar/Navbar";
 
 const Home = () => {
   const { data, isLoading, error } = useProducts();
 
-  if (isLoading) return <p>Yuklanmoqda...</p>;
+  if (isLoading) return <Loading />;
   if (error) return <p>Xatolik yuz berdi</p>;
 
   return (
     <div>
       <Navbar />
-      <ButtonDemo />
       <h1 className="font-display">Mahsulotlar</h1>
       <ul>
         {data?.map((product) => (

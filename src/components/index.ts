@@ -1,5 +1,5 @@
 import { PATHS } from "./common/paths";
-import { ButtonDemo } from "./common/Button";
-import Navbar from "./layout/Navbar";
+import Container from "./common/Container";
+import Loading from "./common/loading";
 
-export { PATHS, ButtonDemo, Navbar };
+export { PATHS, Container, Loading };
