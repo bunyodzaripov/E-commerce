@@ -1,5 +1,5 @@
 import { ButtonDemo } from "@/components/Button";
-import Logos from "@/assets/logos.png";
+import Logos from "@/assets/images/logos.png";
 import { useProducts } from "@/hooks/useProducts";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
     <div>
       <img className="w-28" src={Logos} alt="lgos" />
       <ButtonDemo />
-
+      <h1 className="font-display">Mahsulotlar</h1>
       <ul>
         {data?.map((product) => (
           <li key={product.id}>{product.title}</li>
