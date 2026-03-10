@@ -1,5 +1,5 @@
-import { PATHS } from "./common/paths";
 import Container from "./common/Container";
 import Loading from "./common/loading";
+import Paths from "./common/paths";
 
-export { PATHS, Container, Loading };
+export { Container, Loading, Paths };
