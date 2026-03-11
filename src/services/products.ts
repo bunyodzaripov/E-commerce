@@ -1,4 +1,4 @@
-import type { Product } from "@/@types";
+import type { Product } from "@/@types/index";
 import { api } from "./api";
 
 export const productService = {

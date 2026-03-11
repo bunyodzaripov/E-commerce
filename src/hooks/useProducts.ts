@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { productService } from "@/services";
+import { productService } from "@services/products";
 
 // Query keys — bir joyda boshqaramiz
 export const productKeys = {

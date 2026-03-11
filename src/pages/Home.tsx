@@ -1,6 +1,6 @@
-import { Loading } from "@/components";
-import { useProducts } from "@/hooks/useProducts";
-import Navbar from "@/modules/navbar/Navbar";
+import { Loading } from "@components/index";
+import { useProducts } from "@hooks/useProducts";
+import Navbar from "@modules/navbar/Navbar";
 
 const Home = () => {
   const { data, isLoading, error } = useProducts();
