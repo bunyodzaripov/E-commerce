@@ -3,10 +3,8 @@ import { Menu, ShoppingCart, User, Search } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@components/ui/sheet";
 import { Input } from "@components/ui/input";
 import { Container, PATHS } from "@components/index";
-// import { useCartStore } from "@/store/cartStore";
 import NavBanner from "./NavBanner";
 import NavLinks from "./NavLinks";
-// import NavActions from "./NavActions";
 import Logo from "@assets/images/logos.png";
 
 const Navbar = () => {

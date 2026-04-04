@@ -1,3 +1,3 @@
-import { productService } from "./products";
+import { product } from "./products";
 
-export { productService };
+export { product };
