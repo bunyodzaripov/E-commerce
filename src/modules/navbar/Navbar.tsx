@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Menu, ShoppingCart, User, Search } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@components/ui/sheet";
-import { Input } from "@components/ui/input";
-import { Container, PATHS } from "@components/index";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Input } from "@/components/ui/input";
+import { Container, PATHS } from "@/components";
 import NavBanner from "./NavBanner";
 import NavLinks from "./NavLinks";
-import Logo from "@assets/images/logos.png";
+import Logo from "@/assets/images/logos.png";
 
 const Navbar = () => {
   // const totalItems = useCartStore((state) => state.totalItems);

@@ -1,10 +1,10 @@
 import type { Product } from "@/@types";
-import { Loading } from "@components/index";
-import { useProducts } from "@hooks/useProducts";
-import Navbar from "@modules/navbar/Navbar";
+import { Loading } from "@/components";
+import { useGetProducts } from "@/hooks";
+import { Navbar } from "@/modules";
 
 const Home = () => {
-  const { data, isLoading, error } = useProducts();
+  const { data, isLoading, error } = useGetProducts();
 
   if (isLoading) return <Loading />;
   if (error) return <p>Xatolik yuz berdi</p>;

@@ -5,8 +5,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@components/ui/dropdown-menu";
-import { PATHS } from "@components/index";
+} from "@/components/ui/dropdown-menu";
+import { PATHS } from "@/components";
 
 const categories = [
   "men's clothing",

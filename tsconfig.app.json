@@ -8,17 +8,7 @@
     "types": ["vite/client"],
     "skipLibCheck": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@modules/*": ["./src/modules/*"],
-      "@pages/*": ["./src/pages/*"],
-      "@store/*": ["./src/store/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@services/*": ["./src/services/*"],
-      "@types/*": ["./src/types/*"],
-      "@lib/*": ["./src/lib/*"],
-      "@routes/*": ["./src/routes/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@/*": ["./src/*"]
     },
 
     /* Bundler mode */
