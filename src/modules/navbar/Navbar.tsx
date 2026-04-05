@@ -8,8 +8,6 @@ import NavLinks from "./NavLinks";
 import Logo from "@/assets/images/logos.png";
 
 const Navbar = () => {
-  // const totalItems = useCartStore((state) => state.totalItems);
-
   return (
     <header className="sticky top-0 z-50 bg-white">
       <NavBanner />
@@ -24,12 +22,9 @@ const Navbar = () => {
             </SheetTrigger>
             <SheetContent side="left" className="w-72 p-0">
               {/* Mobile Header */}
-              <div className="px-4 py-4 border-b border-gray-100">
-                <Link
-                  to={PATHS.HOME}
-                  className="font-display font-bold text-xl text-black"
-                >
-                  SHOP.CO
+              <div className="px-4 py-4">
+                <Link to={PATHS.HOME} className="shrink-0">
+                  <img src={Logo} alt="logo" className="h-16 w-auto" />
                 </Link>
               </div>
 
@@ -56,26 +51,6 @@ const Navbar = () => {
                   </Link>
                 ))}
               </nav>
-
-              {/* Mobile Actions */}
-              <div className="mt-auto px-4 py-6 flex gap-4 border-t border-gray-100">
-                <Link
-                  to={PATHS.CART}
-                  className="flex items-center gap-2 text-black font-medium"
-                >
-                  <ShoppingCart size={20} />
-                  Cart
-                  {/* {totalItems() > 0 && (
-                    <span className="bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                      {totalItems()}
-                    </span>
-                  )} */}
-                </Link>
-                <button className="flex items-center gap-2 text-black font-medium">
-                  <User size={20} />
-                  Profile
-                </button>
-              </div>
             </SheetContent>
           </Sheet>
 
@@ -95,7 +70,18 @@ const Navbar = () => {
             </div>
           </div>
 
-          {/* <NavActions /> */}
+          {/* nav actions */}
+          <div className="flex gap-4">
+            <Link
+              to={PATHS.CART}
+              className="flex items-center gap-2 text-black font-medium"
+            >
+              <ShoppingCart size={24} />
+            </Link>
+            <button className="flex items-center gap-2 text-black font-medium">
+              <User size={24} />
+            </button>
+          </div>
         </Container>
       </div>
     </header>
