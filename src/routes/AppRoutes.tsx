@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { PATHS } from "@/components";
-import { Home, NotFound } from "@/pages";
+import Home from "@/pages/Home";
+import NotFound from "@/pages/NotFound";
 
 const AppRoutes = () => {
   return (
