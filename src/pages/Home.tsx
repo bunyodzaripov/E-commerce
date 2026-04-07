@@ -1,4 +1,5 @@
 import { HeroSection, Navbar } from "@/modules";
+import BrowseByStyle from "@/modules/home/Browsebystyle";
 
 const Home = () => {
   return (
@@ -6,6 +7,7 @@ const Home = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <BrowseByStyle />
       </main>
     </>
   );
