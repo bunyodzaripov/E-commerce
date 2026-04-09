@@ -2,5 +2,6 @@ import NavBanner from "./navbar/NavBanner";
 import NavLinks from "./navbar/NavLinks";
 import Navbar from "./navbar/Navbar";
 import HeroSection from "./home/HeroSection";
+import NewArrivals from "./home/NewArrivals";
 
-export { NavBanner, NavLinks, Navbar, HeroSection };
+export { NavBanner, NavLinks, Navbar, HeroSection, NewArrivals };
