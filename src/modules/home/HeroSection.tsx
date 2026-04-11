@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components";
+import { Container, UIButton } from "@/components";
 import { Brand1, Brand2, Brand3, Brand4, Brand5, HeroBg } from "@/assets";
 const stats = [
   { value: "200+", label: "International Brands" },
@@ -24,12 +23,9 @@ export default function HeroSection() {
             </p>
 
             <div className="flex justify-center md:justify-start">
-              <Button
-                variant={"default"}
-                className="w-fit rounded-full bg-black text-white hover:bg-gray-800 px-30.25 md:px-16.75 py-6 text-sm md:text-base font-medium transition-all duration-300 cursor-pointer"
-              >
+              <UIButton className="bg-black text-white hover:bg-gray-800">
                 Shop Now
-              </Button>
+              </UIButton>
             </div>
 
             <div className="flex flex-wrap justify-center xl:flex-nowrap md:justify-start xl:divide-x xl:divide-gray-300 mt-2 md:mt-10 gap-4 md:gap-0">
@@ -55,6 +51,8 @@ export default function HeroSection() {
           </div>
         </div>
       </Container>
+
+      {/* Brands section */}
       <div className=" bg-black">
         <Container className="flex flex-wrap gap-4 justify-between py-10 px-4">
           <img
