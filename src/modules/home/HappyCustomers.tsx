@@ -8,12 +8,11 @@ import {
 import { useGetProducts } from "@/hooks/useProducts";
 
 export default function HappyCustomers() {
-  const { data, isLoading } = useGetProducts();
+  const { data, isLoading, error } = useGetProducts();
 
+  if (error) return <p>{error.message}</p>;
   if (isLoading) return <p>Yuklanmoqda...</p>;
   const reviews = data.products.flatMap((product: Review) => product.reviews);
-
-  console.log(reviews);
 
   return (
     <section className="mt-13 md:mt-20">

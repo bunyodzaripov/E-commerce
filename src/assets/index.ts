@@ -9,6 +9,11 @@ import Category1 from "./images/category-1.png";
 import Category2 from "./images/category-2.png";
 import Category3 from "./images/category-3.png";
 import Category4 from "./images/category-4.png";
+import Payment1 from "./images/payment-1.png";
+import Payment2 from "./images/payment-2.png";
+import Payment3 from "./images/payment-3.png";
+import Payment4 from "./images/payment-4.png";
+import Payment5 from "./images/payment-5.png";
 
 export {
   Brand1,
@@ -22,4 +27,9 @@ export {
   Category2,
   Category3,
   Category4,
+  Payment1,
+  Payment2,
+  Payment3,
+  Payment4,
+  Payment5,
 };

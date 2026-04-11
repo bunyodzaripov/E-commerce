@@ -3,8 +3,9 @@ import { Container, ProductCard, Title, UIButton } from "@/components";
 import { useGetProducts } from "@/hooks";
 
 export default function NewArrivals() {
-  const { data, isLoading } = useGetProducts();
+  const { data, isLoading, error } = useGetProducts();
 
+  if (error) return <p>{error.message}</p>;
   if (isLoading) return <p>Yuklanmoqda...</p>;
 
   return (

@@ -1,4 +1,10 @@
-import { HappyCustomers, HeroSection, Navbar, NewArrivals } from "@/modules";
+import {
+  Footer,
+  HappyCustomers,
+  HeroSection,
+  Navbar,
+  NewArrivals,
+} from "@/modules";
 import BrowseByStyle from "@/modules/home/Browsebystyle";
 
 const Home = () => {
@@ -10,6 +16,7 @@ const Home = () => {
         <NewArrivals />
         <BrowseByStyle />
         <HappyCustomers />
+        <Footer />
       </main>
     </>
   );
