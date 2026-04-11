@@ -23,7 +23,7 @@ export default function HeroSection() {
             </p>
 
             <div className="flex justify-center md:justify-start">
-              <UIButton className="bg-black text-white hover:bg-gray-800">
+              <UIButton className="bg-black text-white hover:bg-gray-800 border-none">
                 Shop Now
               </UIButton>
             </div>

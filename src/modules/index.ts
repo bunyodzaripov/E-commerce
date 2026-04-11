@@ -3,5 +3,13 @@ import NavLinks from "./navbar/NavLinks";
 import Navbar from "./navbar/Navbar";
 import HeroSection from "./home/HeroSection";
 import NewArrivals from "./home/NewArrivals";
+import HappyCustomers from "./home/HappyCustomers";
 
-export { NavBanner, NavLinks, Navbar, HeroSection, NewArrivals };
+export {
+  NavBanner,
+  NavLinks,
+  Navbar,
+  HeroSection,
+  NewArrivals,
+  HappyCustomers,
+};

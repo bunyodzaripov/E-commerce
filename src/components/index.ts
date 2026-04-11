@@ -3,5 +3,17 @@ import Container from "./common/Container";
 import Loading from "./common/loading";
 import ProductCard from "./common/ProductCard";
 import UIButton from "./common/uiButton";
+import Title from "./common/Title";
+import ReviewCard from "./common/ReviewCard";
+import CarouselControls from "./common/CarouselControls";
 
-export { PATHS, Container, Loading, ProductCard, UIButton };
+export {
+  PATHS,
+  Container,
+  Loading,
+  ProductCard,
+  UIButton,
+  Title,
+  ReviewCard,
+  CarouselControls,
+};

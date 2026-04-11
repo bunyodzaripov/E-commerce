@@ -1,5 +1,5 @@
 import { Category1, Category2, Category3, Category4 } from "@/assets";
-import { Container } from "@/components";
+import { Container, Title } from "@/components";
 
 const styles = [
   { label: "Casual", image: Category1 },
@@ -10,11 +10,9 @@ const styles = [
 
 export default function BrowseByStyle() {
   return (
-    <Container className="my-20">
+    <Container className="mt-13 md:mt-20">
       <div className="bg-[#F0F0F0] rounded-[40px] p-6 md:p-16">
-        <h2 className="text-3xl md:text-5xl font-bold text-black text-center uppercase mb-7 md:mb-16 tracking-tight">
-          Browse by Dress Style
-        </h2>
+        <Title title="Browse by Dress Style" />
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row gap-4">
