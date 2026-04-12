@@ -6,6 +6,7 @@ import UIButton from "./common/uiButton";
 import Title from "./common/Title";
 import ReviewCard from "./common/ReviewCard";
 import CarouselControls from "./common/CarouselControls";
+import StyleCard from "./common/StyleCard";
 
 export {
   PATHS,
@@ -16,4 +17,5 @@ export {
   Title,
   ReviewCard,
   CarouselControls,
+  StyleCard,
 };

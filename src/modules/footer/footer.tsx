@@ -13,7 +13,7 @@ import {
   TwitterIcon,
 } from "@/assets/icons";
 import { Container } from "@/components";
-
+import { Newsletter } from "@/modules";
 const footerLinks = [
   {
     title: "Company",
@@ -54,11 +54,16 @@ const paymentMethods = [Payment1, Payment2, Payment3, Payment4, Payment5];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#F0F0F0] mt-42.5">
-      <Container className="pt-25 pb-22">
-        <div className="flex flex-col md:flex-row items-end gap-6 md:gap-28.5">
-          <div className="flex flex-col gap-6 md:max-w-62 shrink-0">
-            <img src={Logo} alt="logo" className="w-30 h-auto" />
+    <footer className="bg-[#F0F0F0] mt-50 md:mt-45">
+      <Container className="pt-25 pb-22 ">
+        <div className="relative">
+          <div className="absolute -top-60 md:-top-50">
+            <Newsletter />
+          </div>
+        </div>
+        <div className="mt-20 md:mt-10 lg:mt-20 flex flex-col md:flex-row items-end gap-6 md:gap-28.5">
+          <div className="flex w-full flex-col gap-2 md:max-w-62">
+            <img src={Logo} alt="logo" className="w-36 md:w-auto h-auto mb-2" />
 
             <p className="text-sm text-black/60 leading-relaxed">
               We have clothes that suits your style and which you're proud to
@@ -78,11 +83,11 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 xl:grid-cols-4 gap-6 md:gap-28.5 w-full">
+          <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-6">
             {footerLinks.map((section) => (
               <div
                 key={section.title}
-                className="flex flex-col justify-between"
+                className="flex flex-col md:justify-between"
               >
                 <h4 className="text-sm md:text-base font-medium text-black uppercase tracking-widest">
                   {section.title}
@@ -92,7 +97,7 @@ export default function Footer() {
                     <li key={link}>
                       <a
                         href="#"
-                        className="whitespace-nowrap text-sm md:text-base font-normal text-gray-500 hover:text-black transition-colors"
+                        className="text-sm md:text-base font-normal text-gray-500 hover:text-black transition-colors"
                       >
                         {link}
                       </a>
@@ -108,7 +113,7 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-400">
-            © 2000-2023, All Rights Reserved
+            shop.co © 2000-2023, All Rights Reserved
           </p>
 
           <div className="flex items-center gap-2 flex-wrap justify-center">

@@ -10,19 +10,17 @@ export default function CarouselControls() {
     <div className="flex gap-2">
       <Button
         variant="ghost"
-        size="lg"
         onClick={scrollPrev}
         disabled={!canScrollPrev}
-        className="rounded-full hover:bg-gray-100"
+        className="rounded-full hover:bg-gray-100 w-6! h-6!"
       >
         <ArrowLeft className="w-6! h-6!" />
       </Button>
       <Button
         variant="ghost"
-        size="lg"
         onClick={scrollNext}
         disabled={!canScrollNext}
-        className="rounded-full hover:bg-gray-100"
+        className="rounded-full hover:bg-gray-100 w-6! h-6!"
       >
         <ArrowRight className="w-6! h-6!" />
       </Button>

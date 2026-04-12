@@ -17,7 +17,7 @@ export default function UIButton({
       variant="default"
       onClick={onClick}
       className={cn(
-        "w-fit rounded-full bg-white border border-[#0000001a] text-black hover:bg-gray-100 px-30.25 md:px-16.75 py-6 text-sm md:text-base font-medium transition-all duration-300 cursor-pointer",
+        "w-fit rounded-full bg-white border border-[#0000001a] text-black hover:bg-gray-100 px-8 md:px-12 py-4 md:py-6 text-sm md:text-base font-medium transition-all duration-300 cursor-pointer",
         className,
       )}
     >

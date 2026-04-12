@@ -17,8 +17,8 @@ export default function HappyCustomers() {
   return (
     <section className="mt-13 md:mt-20">
       <Carousel opts={{ align: "start", loop: false }}>
-        <Container className="flex items-center justify-between mb-8 md:mb-10">
-          <Title title="Our Happy Customers" />
+        <Container className="flex items-center justify-between">
+          <Title title="Our Happy Customers" className="text-start" />
           <CarouselControls />
         </Container>
 

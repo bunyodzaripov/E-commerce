@@ -5,6 +5,7 @@ import HeroSection from "./home/HeroSection";
 import NewArrivals from "./home/NewArrivals";
 import HappyCustomers from "./home/HappyCustomers";
 import Footer from "./footer/footer";
+import Newsletter from "./home/Newsletter";
 
 export {
   NavBanner,
@@ -14,4 +15,5 @@ export {
   NewArrivals,
   HappyCustomers,
   Footer,
+  Newsletter,
 };

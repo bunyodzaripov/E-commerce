@@ -1,5 +1,5 @@
 import { Category1, Category2, Category3, Category4 } from "@/assets";
-import { Container, Title } from "@/components";
+import { Container, StyleCard, Title } from "@/components";
 
 const styles = [
   { label: "Casual", image: Category1 },
@@ -11,45 +11,30 @@ const styles = [
 export default function BrowseByStyle() {
   return (
     <Container className="mt-13 md:mt-20">
-      <div className="bg-[#F0F0F0] rounded-[40px] p-6 md:p-16">
+      <div className="bg-[#F0F0F0] rounded-[20px] lg:rounded-[40px] p-6 lg:p-16">
         <Title title="Browse by Dress Style" />
 
+        {/* categories */}
         <div className="flex flex-col gap-4">
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="w-full md:max-w-101.5 flex-1">
+          <div className="flex flex-col md:flex-row gap-4 md:h-72.25">
+            <div className="h-50 md:h-full lg:w-1/3">
               <StyleCard label={styles[0].label} image={styles[0].image} />
             </div>
-            <div className="max-w-171 flex-1">
+            <div className="h-50 md:h-full lg:w-2/3">
               <StyleCard label={styles[1].label} image={styles[1].image} />
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-4">
-            <div className="max-w-171 flex-1">
+          <div className="flex flex-col md:flex-row gap-4 md:h-72.25">
+            <div className="h-50 md:h-full lg:w-2/3">
               <StyleCard label={styles[2].label} image={styles[2].image} />
             </div>
-            <div className="w-full md:max-w-101.5 flex-1">
+            <div className="h-50 md:h-full lg:w-1/3">
               <StyleCard label={styles[3].label} image={styles[3].image} />
             </div>
           </div>
         </div>
       </div>
     </Container>
-  );
-}
-
-function StyleCard({ label, image }: { label: string; image: string }) {
-  return (
-    <div className="relative rounded-[20px] overflow-hidden bg-white cursor-pointer group">
-      <span className="absolute top-4 left-8 z-10 text-[24px] md:text-[36px] font-bold text-black">
-        {label}
-      </span>
-
-      <img
-        src={image}
-        alt={label}
-        className="w-full h-auto max-h-55 md:max-h-65 object-cover transition-transform duration-300 group-hover:scale-105"
-      />
-    </div>
   );
 }
