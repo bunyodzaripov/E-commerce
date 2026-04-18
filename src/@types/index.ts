@@ -55,3 +55,12 @@ export interface Review {
   reviewerEmail: string;
   reviews: Review[];
 }
+
+// Product params types
+export interface GetProductsParams {
+  page?: number;
+  limit?: number;
+  category?: string;
+  sortBy?: string;
+  order?: "asc" | "desc";
+}

@@ -3,7 +3,7 @@ import { Container, ProductCard, Title, UIButton } from "@/components";
 import { useGetProducts } from "@/hooks";
 
 export default function NewArrivals() {
-  const { data, isLoading, error } = useGetProducts();
+  const { data, isLoading, error } = useGetProducts({ limit: 8 });
 
   if (error) return <p>{error.message}</p>;
   if (isLoading) return <p>Yuklanmoqda...</p>;
@@ -14,7 +14,7 @@ export default function NewArrivals() {
       <Title title="New Arrivals" />
 
       {/* Products */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
         {data?.products?.slice(0, 4).map((product: Product) => (
           <ProductCard key={product.id} product={product} />
         ))}
@@ -28,8 +28,8 @@ export default function NewArrivals() {
       <Title title="Top Selling" />
 
       {/* Products */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-        {data?.products?.slice(0, 4).map((product: Product) => (
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
+        {data?.products?.slice(4, 8).map((product: Product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

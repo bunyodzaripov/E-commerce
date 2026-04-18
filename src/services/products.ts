@@ -1,14 +1,13 @@
+import type { GetProductsParams } from "@/@types";
 import api from "./api";
 
 export const product = {
-  getAll: () =>
-    api
-      .get("/products")
-      .then((r) => r.data)
-      .catch(() => []),
-  getById: (id: number) =>
-    api
-      .get(`/products/${id}`)
-      .then((r) => r.data)
-      .catch(() => ({})),
+  getAll: async (params: GetProductsParams = {}) => {
+    const skip = ((params.page ?? 1) - 1) * (params.limit ?? 9);
+
+    const res = await api.get("/products", {
+      params: { ...params, skip },
+    });
+    return res.data;
+  },
 };

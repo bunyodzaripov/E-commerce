@@ -7,6 +7,8 @@ import Title from "./common/Title";
 import ReviewCard from "./common/ReviewCard";
 import CarouselControls from "./common/CarouselControls";
 import StyleCard from "./common/StyleCard";
+import Layout from "./common/Layout";
+import Pagination from "./common/Pagination";
 
 export {
   PATHS,
@@ -18,4 +20,6 @@ export {
   ReviewCard,
   CarouselControls,
   StyleCard,
+  Layout,
+  Pagination,
 };

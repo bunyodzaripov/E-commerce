@@ -1,18 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface UIButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   className?: string;
+  to?: string;
 }
 
 export default function UIButton({
   children,
   onClick,
   className,
+  to,
 }: UIButtonProps) {
-  return (
+  const button = (
     <Button
       variant="default"
       onClick={onClick}
@@ -24,4 +27,10 @@ export default function UIButton({
       {children}
     </Button>
   );
+
+  if (to) {
+    return <Link to={to}>{button}</Link>;
+  }
+
+  return button;
 }

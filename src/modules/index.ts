@@ -4,8 +4,10 @@ import Navbar from "./navbar/Navbar";
 import HeroSection from "./home/HeroSection";
 import NewArrivals from "./home/NewArrivals";
 import HappyCustomers from "./home/HappyCustomers";
-import Footer from "./footer/footer";
 import Newsletter from "./home/Newsletter";
+import Footer from "./footer/footer";
+import ProductsGrid from "./products/ProductsGrid";
+import FilterSidebar from "./products/FilterSidebar";
 
 export {
   NavBanner,
@@ -16,4 +18,6 @@ export {
   HappyCustomers,
   Footer,
   Newsletter,
+  ProductsGrid,
+  FilterSidebar,
 };

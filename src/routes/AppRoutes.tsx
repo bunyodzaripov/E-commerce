@@ -1,13 +1,16 @@
 import { Routes, Route } from "react-router-dom";
-import { PATHS } from "@/components";
-import Home from "@/pages/Home";
-import NotFound from "@/pages/NotFound";
+import { Layout, PATHS } from "@/components";
+import { Home, NotFound, Products } from "@/pages";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route path={PATHS.HOME} element={<Home />} />
-      <Route path="*" element={<NotFound />} />
+      <Route element={<Layout />}>
+        <Route path={PATHS.HOME} element={<Home />} />
+        <Route path={PATHS.PRODUCTS} element={<Products />} />
+        <Route path={PATHS.PRODUCTS_CATEGORY} element={<Products />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
     </Routes>
   );
 };

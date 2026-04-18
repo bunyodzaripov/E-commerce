@@ -23,7 +23,10 @@ export default function HeroSection() {
             </p>
 
             <div className="flex justify-center lg:justify-start">
-              <UIButton className="bg-black text-white hover:bg-gray-800 border-none w-full md:w-auto">
+              <UIButton
+                to="/products"
+                className="bg-black text-white hover:bg-gray-800 border-none w-full md:w-auto"
+              >
                 Shop Now
               </UIButton>
             </div>

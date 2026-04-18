@@ -1,6 +1,7 @@
 export const PATHS = {
   HOME: "/",
-  SHOP: "/shop",
+  PRODUCTS: "/products",
+  PRODUCTS_CATEGORY: "/products/:category",
   PRODUCT: "/product/:id",
   CART: "/cart",
 } as const;
