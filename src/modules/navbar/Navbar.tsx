@@ -42,7 +42,7 @@ const Navbar = () => {
               {["Shop", "On Sale", "New Arrivals", "Brands"].map((link) => (
                 <Link
                   key={link}
-                  to={PATHS.SHOP}
+                  to={PATHS.PRODUCTS}
                   className="text-black font-medium text-base py-3 border-b border-gray-100 hover:opacity-70 transition-opacity"
                 >
                   {link}
