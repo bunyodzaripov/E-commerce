@@ -63,4 +63,5 @@ export interface GetProductsParams {
   category?: string;
   sortBy?: string;
   order?: "asc" | "desc";
+  search?: string;
 }

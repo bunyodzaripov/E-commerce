@@ -8,3 +8,11 @@ export const useGetProducts = (params: GetProductsParams = {}) => {
     queryFn: () => product.getAll(params),
   });
 };
+
+export const useSearchProducts = (search: string) => {
+  return useQuery({
+    queryKey: ["products", "search", search],
+    queryFn: () => product.search(search),
+    enabled: search.length > 1,
+  });
+};

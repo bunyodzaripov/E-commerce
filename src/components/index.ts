@@ -11,6 +11,7 @@ import Layout from "./common/Layout";
 import Pagination from "./common/Pagination";
 import SortSelect from "./common/SortSelect";
 import Breadcrumb from "./common/Breadcrumb";
+import SearchBar from "./common/SearchBar";
 
 export {
   PATHS,
@@ -26,4 +27,5 @@ export {
   Pagination,
   SortSelect,
   Breadcrumb,
+  SearchBar,
 };

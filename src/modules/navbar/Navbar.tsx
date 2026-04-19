@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { Menu, ShoppingCart, User, Search } from "lucide-react";
+import { Menu, ShoppingCart, User } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Input } from "@/components/ui/input";
-import { Container, PATHS } from "@/components";
+import { Container, PATHS, SearchBar } from "@/components";
 import NavBanner from "./NavBanner";
 import NavLinks from "./NavLinks";
 import Logo from "@/assets/images/logos.png";
@@ -29,11 +28,7 @@ const Navbar = () => {
             {/* Mobile Search */}
             <div className="px-4 py-3 border-b border-gray-100">
               <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 gap-2">
-                <Search size={16} className="text-gray-400 shrink-0" />
-                <Input
-                  placeholder="Search for products..."
-                  className="border-none bg-transparent shadow-none p-0 h-auto text-sm focus-visible:ring-0"
-                />
+                <SearchBar />
               </div>
             </div>
 
@@ -60,11 +55,7 @@ const Navbar = () => {
 
         <div className="hidden md:flex flex-1 max-w-md">
           <div className="flex items-center w-full bg-gray-100 rounded-full px-4 py-2 gap-2">
-            <Search size={16} className="text-gray-400 shrink-0" />
-            <Input
-              placeholder="Search for products..."
-              className="border-none bg-transparent shadow-none p-0 h-auto text-sm focus-visible:ring-0"
-            />
+            <SearchBar />
           </div>
         </div>
 

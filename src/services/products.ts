@@ -10,4 +10,7 @@ export const product = {
     });
     return res.data;
   },
+
+  search: (q: string) =>
+    api.get("/products/search", { params: { q } }).then((r) => r.data),
 };

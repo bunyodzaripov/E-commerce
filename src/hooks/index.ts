@@ -1,3 +1,4 @@
-import { useGetProducts } from "@/hooks/useProducts";
+import { useGetProducts, useSearchProducts } from "@/hooks/useProducts";
+import { useDebounce } from "./useDebounce";
 
-export { useGetProducts };
+export { useGetProducts, useSearchProducts, useDebounce };
