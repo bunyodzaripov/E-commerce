@@ -21,7 +21,9 @@ export default function NewArrivals() {
       </div>
 
       <div className="flex justify-center mt-6 md:mt-9 mb-20 md:mb-32 ">
-        <UIButton className="w-full md:w-auto">View All</UIButton>
+        <UIButton className="w-full md:w-auto" to="/products">
+          View All
+        </UIButton>
       </div>
 
       {/* Top selling section */}
@@ -35,7 +37,9 @@ export default function NewArrivals() {
       </div>
 
       <div className="flex justify-center mt-6 md:mt-9">
-        <UIButton className="w-full md:w-auto">View All</UIButton>
+        <UIButton className="w-full md:w-auto" to="/products">
+          View All
+        </UIButton>
       </div>
     </Container>
   );

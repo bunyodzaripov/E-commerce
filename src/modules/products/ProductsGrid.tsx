@@ -27,6 +27,7 @@ export default function ProductsGrid() {
     sizes: [] as string[],
     dressStyles: [] as string[],
   });
+  const { category } = useParams<{ category: string }>();
 
   // get all products
   const { data, isLoading } = useGetProducts({
@@ -34,6 +35,7 @@ export default function ProductsGrid() {
     limit: LIMIT,
     sortBy,
     order,
+    category,
   });
 
   // Pagination
@@ -41,7 +43,6 @@ export default function ProductsGrid() {
   const totalPages = Math.ceil((data?.total ?? 0) / LIMIT);
 
   // ---- Breadcrumb ----
-  const { category } = useParams<{ category: string }>();
   const categoryName = category
     ? category.charAt(0).toUpperCase() + category.slice(1)
     : "All Products";

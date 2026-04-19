@@ -3,6 +3,8 @@ import { ChevronDown, ChevronUp, Sliders } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
 import { UIButton } from "@/components";
+import { useGetCategories } from "@/hooks";
+import { useNavigate, useParams } from "react-router-dom";
 
 // ---- Types ----
 interface FilterState {
@@ -16,9 +18,6 @@ interface FilterSidebarProps {
   filters: FilterState;
   onChange: (filters: FilterState) => void;
 }
-
-// ---- Data ----
-const categories = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
 
 const colors = [
   { value: "green", bg: "bg-green-500" },
@@ -82,26 +81,38 @@ export default function FilterSidebar({
   const toggle = <T,>(arr: T[], val: T): T[] =>
     arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val];
 
+  // Filter categories
+  const { data: categories } = useGetCategories();
+  const { category: activeCategory } = useParams<{ category: string }>();
+  const navigate = useNavigate();
+
   return (
     <div className="w-full border border-gray-200 rounded-2xl py-5 px-6">
       {/* Header */}
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-[20px] font-bold text-black">Filters</span>
+      <div className="flex items-center justify-between mb-6">
+        <span className="text-[20px] font-normal text-black">Filters</span>
         <Sliders className="w-6 h-6 text-gray-500" />
       </div>
 
       {/* Categories */}
-      <div className="border-t border-gray-200 py-4 flex flex-col gap-5">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            className="flex items-center justify-between text-base font-normal text-gray-500 hover:text-black transition-colors"
-          >
-            {cat}
-            <ChevronDown className="w-4 h-4 -rotate-90" />
-          </button>
-        ))}
-      </div>
+      <FilterSection title="Categories">
+        <div className="py-4 flex flex-col gap-3">
+          {categories?.map((cat: { slug: string; name: string }) => (
+            <button
+              key={cat.slug}
+              onClick={() => navigate(`/products/${cat.slug}`)}
+              className={`flex items-center justify-between text-sm transition-colors ${
+                activeCategory === cat.slug
+                  ? "text-black font-semibold"
+                  : "text-gray-500 hover:text-black"
+              }`}
+            >
+              {cat.name}
+              <ChevronDown className="w-4 h-4 -rotate-90" />
+            </button>
+          ))}
+        </div>
+      </FilterSection>
 
       {/* Price */}
       <FilterSection title="Price">

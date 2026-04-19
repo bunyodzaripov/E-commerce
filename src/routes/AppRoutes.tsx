@@ -4,14 +4,17 @@ import { Home, NotFound, Products } from "@/pages";
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path={PATHS.HOME} element={<Home />} />
-        <Route path={PATHS.PRODUCTS} element={<Products />} />
-        <Route path={PATHS.PRODUCTS_CATEGORY} element={<Products />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+    <>
+      {/* <ScrollToTop /> */}
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path={PATHS.HOME} element={<Home />} />
+          <Route path={PATHS.PRODUCTS} element={<Products />} />
+          <Route path={PATHS.PRODUCTS_CATEGORY} element={<Products />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 

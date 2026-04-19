@@ -12,6 +12,7 @@ import Pagination from "./common/Pagination";
 import SortSelect from "./common/SortSelect";
 import Breadcrumb from "./common/Breadcrumb";
 import SearchBar from "./common/SearchBar";
+import ScrollToTop from "./common/ScrollToTop";
 
 export {
   PATHS,
@@ -28,4 +29,5 @@ export {
   SortSelect,
   Breadcrumb,
   SearchBar,
+  ScrollToTop,
 };

@@ -16,3 +16,10 @@ export const useSearchProducts = (search: string) => {
     enabled: search.length > 1,
   });
 };
+
+export const useGetCategories = () => {
+  return useQuery({
+    queryKey: ["categories"],
+    queryFn: () => product.getCategories(),
+  });
+};
