@@ -9,6 +9,8 @@ import CarouselControls from "./common/CarouselControls";
 import StyleCard from "./common/StyleCard";
 import Layout from "./common/Layout";
 import Pagination from "./common/Pagination";
+import SortSelect from "./common/SortSelect";
+import Breadcrumb from "./common/Breadcrumb";
 
 export {
   PATHS,
@@ -22,4 +24,6 @@ export {
   StyleCard,
   Layout,
   Pagination,
+  SortSelect,
+  Breadcrumb,
 };

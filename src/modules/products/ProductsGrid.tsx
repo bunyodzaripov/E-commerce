@@ -1,7 +1,13 @@
 import { useState } from "react";
-import { ChevronDown, ChevronRight, Sliders } from "lucide-react";
+import { Sliders } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Container, Pagination, ProductCard } from "@/components";
+import {
+  Breadcrumb,
+  Container,
+  Pagination,
+  ProductCard,
+  SortSelect,
+} from "@/components";
 import { useGetProducts } from "@/hooks";
 import type { Product } from "@/@types";
 import { FilterSidebar } from "@/modules";
@@ -9,19 +15,10 @@ import { useParams } from "react-router-dom";
 
 const LIMIT = 9;
 
-// ---- Breadcrumb ----
-function Breadcrumb({ category }: { category: string }) {
-  return (
-    <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
-      <span className="hover:text-black cursor-pointer">Home</span>
-      <ChevronRight className="w-3 h-3" />
-      <span className="text-black font-medium">{category}</span>
-    </div>
-  );
-}
-
 // ---- Main ----
 export default function ProductsGrid() {
+  const [sortBy, setSortBy] = useState("title");
+  const [order, setOrder] = useState<"asc" | "desc">("asc");
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilter, setShowFilter] = useState(false);
   const [filters, setFilters] = useState({
@@ -35,6 +32,8 @@ export default function ProductsGrid() {
   const { data, isLoading } = useGetProducts({
     page: currentPage,
     limit: LIMIT,
+    sortBy,
+    order,
   });
 
   // Pagination
@@ -52,7 +51,9 @@ export default function ProductsGrid() {
       <hr className="border-t border-gray-200 mb-6" />
 
       {/* Breadcrumb */}
-      <Breadcrumb category={categoryName} />
+      <Breadcrumb
+        items={[{ label: "Home", href: "/" }, { label: categoryName }]}
+      />
 
       <div className="flex gap-6 mt-6">
         {/* Sidebar — Mobile hidden */}
@@ -64,7 +65,7 @@ export default function ProductsGrid() {
         <div className="w-full md:w-[70%]">
           {/* Top bar */}
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-2xl md:text-[28px] lg:text-[32px] font-bold text-black">
+            <h1 className="text-[20px] md:text-[28px] lg:text-[32px] font-bold text-black">
               {categoryName}
             </h1>
 
@@ -74,11 +75,16 @@ export default function ProductsGrid() {
               </p>
 
               {/* Sort */}
-              <div className="hidden md:flex items-center gap-1 text-sm text-gray-500">
-                Sort by:
-                <button className="font-semibold text-black flex items-center gap-1">
-                  Most Popular <ChevronDown className="w-4 h-4" />
-                </button>
+              <div>
+                <SortSelect
+                  sortBy={sortBy}
+                  order={order}
+                  onChange={(s, o) => {
+                    setSortBy(s);
+                    setOrder(o);
+                    setCurrentPage(1);
+                  }}
+                />
               </div>
 
               {/* Mobile filter button */}
