@@ -12,4 +12,5 @@ export const product = {
   search: (q: string) =>
     api.get("/products/search", { params: { q } }).then((r) => r.data),
   getCategories: () => api.get("/products/categories").then((r) => r.data),
+  getById: (id: number) => api.get(`/products/${id}`).then((r) => r.data),
 };

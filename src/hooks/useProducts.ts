@@ -9,6 +9,14 @@ export const useGetProducts = (params: GetProductsParams = {}) => {
   });
 };
 
+export const useGetProductDetails = (id: number) => {
+  return useQuery({
+    queryKey: ["product", id],
+    queryFn: () => product.getById(id),
+    enabled: !!id,
+  });
+};
+
 export const useSearchProducts = (search: string) => {
   return useQuery({
     queryKey: ["products", "search", search],

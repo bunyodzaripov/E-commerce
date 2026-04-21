@@ -6,5 +6,4 @@ export const PATHS = {
   CART: "/cart",
 } as const;
 
-// Helper — product ID bilan link yasash
 export const getProductPath = (id: number) => `/product/${id}`;

@@ -1,6 +1,7 @@
 import type { Product } from "@/@types";
 import { Badge } from "@/components/ui/badge";
 import { Star, StarHalf } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function ProductCard({ product }: { product: Product }) {
   // Discounted price
@@ -9,41 +10,43 @@ export default function ProductCard({ product }: { product: Product }) {
     : null;
 
   return (
-    <div className="flex flex-col gap-3 cursor-pointer group">
-      {/* Image */}
-      <div className="bg-[#f2f2f2] rounded-2xl overflow-hidden flex items-center justify-center p-4">
-        <img
-          src={product.images[0]}
-          alt={product.title}
-          className="w-full h-50 md:h-65 object-contain transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
+    <Link to={`/product/${product.id}`}>
+      <div className="flex flex-col gap-3 cursor-pointer group">
+        {/* Image */}
+        <div className="bg-[#F0EEED] rounded-2xl overflow-hidden flex items-center justify-center p-4">
+          <img
+            src={product.images[0]}
+            alt={product.title}
+            className="w-full h-50 md:h-65 object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
 
-      {/* Title */}
-      <p className="font-bold text-black text-sm md:text-base leading-snug">
-        {product.title}
-      </p>
+        {/* Title */}
+        <p className="font-bold text-black text-sm md:text-base leading-snug">
+          {product.title}
+        </p>
 
-      {/* Rating */}
-      <RatingStars rating={product.rating} />
+        {/* Rating */}
+        <RatingStars rating={product.rating} />
 
-      {/* Price */}
-      <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-lg md:text-xl font-black text-black">
-          ${discountedPrice ?? product.price}
-        </span>
-        {discountedPrice && (
-          <span className="text-sm md:text-base text-gray-400 line-through">
-            ${product.price}
+        {/* Price */}
+        <div className="flex items-center gap-2 flex-wrap">
+          <span className="text-lg md:text-xl font-black text-black">
+            ${discountedPrice ?? product.price}
           </span>
-        )}
-        {product.discountPercentage && (
-          <Badge className="bg-red-100 text-red-500 text-xs font-semibold rounded-full px-2 py-0.5 hover:bg-red-100">
-            -{product.discountPercentage}%
-          </Badge>
-        )}
+          {discountedPrice && (
+            <span className="text-sm md:text-base text-gray-400 line-through">
+              ${product.price}
+            </span>
+          )}
+          {product.discountPercentage && (
+            <Badge className="bg-red-100 text-red-500 text-xs font-semibold rounded-full px-2 py-0.5 hover:bg-red-100">
+              -{product.discountPercentage}%
+            </Badge>
+          )}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

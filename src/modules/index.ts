@@ -8,7 +8,7 @@ import Newsletter from "./home/Newsletter";
 import Footer from "./footer/footer";
 import ProductsGrid from "./products/ProductsGrid";
 import FilterSidebar from "./products/FilterSidebar";
-
+import ProductDetails from "./products/ProductDetail";
 export {
   NavBanner,
   NavLinks,
@@ -20,4 +20,5 @@ export {
   Newsletter,
   ProductsGrid,
   FilterSidebar,
+  ProductDetails,
 };

@@ -36,7 +36,7 @@ export default function SearchBar() {
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
-          className="border-none bg-transparent shadow-none p-0 h-auto text-sm focus-visible:ring-0"
+          className="border-none bg-transparent shadow-none p-0 h-auto text-sm focus-visible:ring-0 focus:placeholder:text-transparent"
         />
       </div>
 
