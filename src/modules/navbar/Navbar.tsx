@@ -5,8 +5,12 @@ import { Container, PATHS, SearchBar } from "@/components";
 import NavBanner from "./NavBanner";
 import NavLinks from "./NavLinks";
 import Logo from "@/assets/images/logos.png";
+import { useCartStore } from "@/store/cartStore";
 
 const Navbar = () => {
+  const items = useCartStore((state) => state.items);
+  const totalCount = items.reduce((acc, i) => acc + i.quantity, 0);
+
   return (
     <header className="sticky w-full top-0 left-0 z-50 bg-white">
       <NavBanner />
@@ -63,9 +67,14 @@ const Navbar = () => {
         <div className="flex gap-4">
           <Link
             to={PATHS.CART}
-            className="flex items-center gap-2 text-black font-medium"
+            className="flex items-center relative gap-2 text-black font-medium"
           >
             <ShoppingCart size={24} />
+            {totalCount > 0 && (
+              <span className="absolute -top-2 -right-2 w-5 h-5 bg-black text-white text-xs rounded-full flex items-center justify-center">
+                {totalCount}
+              </span>
+            )}
           </Link>
           <button className="flex items-center gap-2 text-black font-medium">
             <User size={24} />

@@ -9,6 +9,7 @@ import Footer from "./footer/footer";
 import ProductsGrid from "./products/ProductsGrid";
 import FilterSidebar from "./products/FilterSidebar";
 import ProductDetails from "./products/ProductDetail";
+import CartPage from "./cart/Cart";
 export {
   NavBanner,
   NavLinks,
@@ -21,4 +22,5 @@ export {
   ProductsGrid,
   FilterSidebar,
   ProductDetails,
+  CartPage,
 };

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Container, Breadcrumb, ReviewCard, UIButton } from "@/components";
 import { useGetProductDetails } from "@/hooks";
 import type { Review } from "@/@types";
+import { useCartStore } from "@/store/cartStore";
 
 // ---- Rating Stars ----
 function RatingStars({ rating }: { rating: number }) {
@@ -33,6 +34,9 @@ export default function ProductDetail() {
   const [showAllReviews, setShowAllReviews] = useState(false);
 
   const sizes = ["Small", "Medium", "Large", "X-Large"];
+
+  // Cart add functions
+  const addItem = useCartStore((state) => state.addItem);
 
   const discountedPrice = product?.discountPercentage
     ? Math.round(product.price * (1 - product.discountPercentage / 100))
@@ -183,7 +187,21 @@ export default function ProductDetail() {
                 <Plus className="w-4 h-4" />
               </button>
             </div>
-            <UIButton className="bg-black text-white hover:bg-gray-900">
+            <UIButton
+              className="bg-black text-white hover:bg-gray-900"
+              onClick={() =>
+                addItem({
+                  id: product.id,
+                  title: product.title,
+                  price: discountedPrice ?? product.price,
+                  image: product.images[0],
+                  size: selectedSize || "One Size",
+                  color: product.color || "",
+                  quantity,
+                  discountPercentage: product.discountPercentage,
+                })
+              }
+            >
               Add to Cart
             </UIButton>
           </div>

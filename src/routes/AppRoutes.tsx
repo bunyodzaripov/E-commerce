@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout, PATHS } from "@/components";
-import { Home, NotFound, ProductDetail, Products } from "@/pages";
+import { Cart, Home, NotFound, ProductDetail, Products } from "@/pages";
 
 const AppRoutes = () => {
   return (
@@ -12,6 +12,7 @@ const AppRoutes = () => {
           <Route path={PATHS.PRODUCTS} element={<Products />} />
           <Route path={PATHS.PRODUCTS_CATEGORY} element={<Products />} />
           <Route path={PATHS.PRODUCT} element={<ProductDetail />} />
+          <Route path={PATHS.CART} element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
