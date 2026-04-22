@@ -11,7 +11,7 @@ export default function NewArrivals() {
   return (
     <Container className="mt-14 lg:mt-18">
       {/* New arrivals section */}
-      <Title title="New Arrivals" />
+      <Title title="New Arrivals" id="new-arrivals" />
 
       {/* Products */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">
@@ -27,7 +27,7 @@ export default function NewArrivals() {
       </div>
 
       {/* Top selling section */}
-      <Title title="Top Selling" />
+      <Title title="Top Selling" id="top-selling" />
 
       {/* Products */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5">

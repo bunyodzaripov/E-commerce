@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { cart } from "@/services";
+import { useCartStore } from "@/store/cartStore";
 import { ArrowRight, Tag } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 
 // ---- Order Summary ----
 export default function OrderSummary({ subtotal }: { subtotal: number }) {
@@ -9,6 +12,17 @@ export default function OrderSummary({ subtotal }: { subtotal: number }) {
   const discount = Math.round(subtotal * 0.2);
   const delivery = 15;
   const total = subtotal - discount + delivery;
+  const { items, clearCart } = useCartStore();
+
+  const handleCheckout = async () => {
+    try {
+      await cart.checkout(items);
+      clearCart();
+      toast.success("Order placed successfully!");
+    } catch {
+      toast.error("Something went wrong!");
+    }
+  };
 
   return (
     <div className="border border-gray-200 rounded-2xl p-6 flex flex-col gap-5 h-fit">
@@ -54,7 +68,10 @@ export default function OrderSummary({ subtotal }: { subtotal: number }) {
       </div>
 
       {/* Checkout */}
-      <Button className="w-full rounded-full bg-black text-white hover:bg-gray-900 h-12 gap-2 text-base">
+      <Button
+        onClick={handleCheckout}
+        className="w-full rounded-full bg-black text-white hover:bg-gray-900 h-12 gap-2 text-base"
+      >
         Go to Checkout <ArrowRight className="w-4 h-4" />
       </Button>
     </div>

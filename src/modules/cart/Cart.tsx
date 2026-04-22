@@ -47,7 +47,7 @@ export default function CartPage() {
           </div>
 
           {/* Order Summary */}
-          <div className="w-full md:w-95 shrink-0 md:sticky md:top-24 h-fit">
+          <div className=" md:sticky md:top-24">
             <OrderSummary subtotal={subtotal} />
           </div>
         </div>

@@ -1,21 +1,15 @@
+import type { CartItem } from "@/@types";
 import { useCartStore } from "@/store/cartStore";
 import { Minus, Plus, Trash2 } from "lucide-react";
+import { toast } from "sonner";
 
-export default function CartItem({
-  item,
-}: {
-  item: {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    size: string;
-    color: string;
-    quantity: number;
-  };
-}) {
+export default function CartItem({ item }: { item: CartItem }) {
   const { removeItem, updateQuantity } = useCartStore();
 
+  const handleRemove = () => {
+    removeItem(item.id, item.size);
+    toast.success("Item removed from cart!");
+  };
   return (
     <div className="flex items-center gap-4 py-5 border-b border-gray-100 last:border-none">
       {/* Rasm */}
@@ -34,7 +28,7 @@ export default function CartItem({
             {item.title}
           </h3>
           <button
-            onClick={() => removeItem(item.id, item.size)}
+            onClick={handleRemove}
             className="text-red-400 hover:text-red-600 transition-colors shrink-0"
           >
             <Trash2 className="w-4 h-4 md:w-5 md:h-5" />

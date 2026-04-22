@@ -36,23 +36,23 @@ const NavLinks = () => {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <Link
-        to={PATHS.PRODUCTS}
-        className="text-black font-medium hover:opacity-70 transition-opacity"
+      <a
+        href="#top-selling"
+        className="text-black font-medium hover:text-gray-500 transition-opacity"
       >
         On Sale
-      </Link>
-      <Link
-        to={PATHS.PRODUCTS}
-        className="text-black font-medium hover:opacity-70 transition-opacity"
+      </a>
+      <a
+        href="#new-arrivals"
+        className="text-black font-medium hover:text-gray-500 transition-opacity"
       >
         New Arrivals
-      </Link>
+      </a>
       <Link
         to={PATHS.PRODUCTS}
-        className="text-black font-medium hover:opacity-70 transition-opacity"
+        className="text-black font-medium hover:text-gray-500 transition-opacity"
       >
-        Brands
+        Products
       </Link>
     </nav>
   );

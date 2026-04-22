@@ -8,6 +8,7 @@ import { Container, Breadcrumb, ReviewCard, UIButton } from "@/components";
 import { useGetProductDetails } from "@/hooks";
 import type { Review } from "@/@types";
 import { useCartStore } from "@/store/cartStore";
+import { toast } from "sonner";
 
 // ---- Rating Stars ----
 function RatingStars({ rating }: { rating: number }) {
@@ -37,6 +38,23 @@ export default function ProductDetail() {
 
   // Cart add functions
   const addItem = useCartStore((state) => state.addItem);
+
+  const handleAddToCart = () => {
+    try {
+      addItem({
+        id: product.id,
+        title: product.title,
+        price: discountedPrice ?? product.price,
+        image: product.images[0],
+        size: selectedSize,
+        color: product.color || "",
+        quantity,
+      });
+      toast.success("Product added to cart!");
+    } catch {
+      toast.error("Something went wrong!");
+    }
+  };
 
   const discountedPrice = product?.discountPercentage
     ? Math.round(product.price * (1 - product.discountPercentage / 100))
@@ -189,18 +207,7 @@ export default function ProductDetail() {
             </div>
             <UIButton
               className="bg-black text-white hover:bg-gray-900"
-              onClick={() =>
-                addItem({
-                  id: product.id,
-                  title: product.title,
-                  price: discountedPrice ?? product.price,
-                  image: product.images[0],
-                  size: selectedSize || "One Size",
-                  color: product.color || "",
-                  quantity,
-                  discountPercentage: product.discountPercentage,
-                })
-              }
+              onClick={handleAddToCart}
             >
               Add to Cart
             </UIButton>

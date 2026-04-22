@@ -65,3 +65,15 @@ export interface GetProductsParams {
   order?: "asc" | "desc";
   search?: string;
 }
+
+// Cart types
+export interface CartItem {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+  size: string;
+  color: string;
+  quantity: number;
+  discountPercentage?: number;
+}
