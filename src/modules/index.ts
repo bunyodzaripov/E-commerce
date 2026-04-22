@@ -10,6 +10,7 @@ import ProductsGrid from "./products/ProductsGrid";
 import FilterSidebar from "./products/FilterSidebar";
 import ProductDetails from "./products/ProductDetail";
 import CartPage from "./cart/Cart";
+import LoginPage from "./auth/Login";
 export {
   NavBanner,
   NavLinks,
@@ -23,4 +24,5 @@ export {
   FilterSidebar,
   ProductDetails,
   CartPage,
+  LoginPage,
 };

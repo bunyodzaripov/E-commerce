@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Layout, PATHS } from "@/components";
-import { Cart, Home, NotFound, ProductDetail, Products } from "@/pages";
+import { Auth, Cart, Home, NotFound, ProductDetail, Products } from "@/pages";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +15,7 @@ const AppRoutes = () => {
           <Route path={PATHS.CART} element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path={PATHS.LOGIN} element={<Auth />} />
       </Routes>
     </>
   );

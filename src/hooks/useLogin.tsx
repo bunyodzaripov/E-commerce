@@ -1,0 +1,25 @@
+import { useMutation } from "@tanstack/react-query";
+import { auth } from "@/services/auth";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "@/store/auth";
+
+export const useLogin = () => {
+  const { setUser } = useAuthStore();
+
+  const navigate = useNavigate();
+
+  return useMutation({
+    mutationFn: auth.login,
+
+    onSuccess: (data) => {
+      setUser(data);
+      navigate("/");
+      toast.success(`Welcome back, ${data.firstName}!`);
+    },
+
+    onError: (error) => {
+      toast.error(error.message);
+    },
+  });
+};

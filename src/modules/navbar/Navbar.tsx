@@ -6,8 +6,10 @@ import NavBanner from "./NavBanner";
 import NavLinks from "./NavLinks";
 import Logo from "@/assets/images/logos.png";
 import { useCartStore } from "@/store/cartStore";
+import { useAuthStore } from "@/store/auth";
 
 const Navbar = () => {
+  const { user, logout } = useAuthStore();
   const items = useCartStore((state) => state.items);
   const totalCount = items.reduce((acc, i) => acc + i.quantity, 0);
 
@@ -78,6 +80,11 @@ const Navbar = () => {
           </Link>
           <button className="flex items-center gap-2 text-black font-medium">
             <User size={24} />
+            {user ? (
+              <span onClick={logout}>Logout</span>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </button>
         </div>
       </Container>
