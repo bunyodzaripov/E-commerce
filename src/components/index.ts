@@ -15,6 +15,8 @@ import SearchBar from "./common/SearchBar";
 import ScrollToTop from "./common/ScrollToTop";
 import ProductSkeleton from "./common/ProductSkeleton";
 import EmptyState from "./common/EmptyState";
+import { ErrorBoundary } from "./common/ErrorBoundary";
+import PageLoader from "./common/PageLoader";
 
 export {
   PATHS,
@@ -34,4 +36,6 @@ export {
   ScrollToTop,
   ProductSkeleton,
   EmptyState,
+  ErrorBoundary,
+  PageLoader,
 };

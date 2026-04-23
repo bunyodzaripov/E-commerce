@@ -1,6 +1,7 @@
 import axios from "axios";
 import { tokenStorage } from "@/lib/token";
 import { auth } from "./auth";
+import { toast } from "sonner";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -21,6 +22,34 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error),
+);
+
+// Error handler
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const message = error.response?.data?.message || "Something went wrong!";
+    const status = error.response?.status;
+
+    toast.error(message);
+    // 401 — logout
+    if (status === 401) {
+      tokenStorage.remove();
+      window.location.href = "/login";
+    }
+
+    // 403 — ruxsat yo'q
+    if (status === 403) {
+      toast.error("You don't have permission!");
+    }
+
+    // 500 — server xatosi
+    if (status >= 500) {
+      toast.error("Server error. Please try again later!");
+    }
+
+    return Promise.reject(error);
+  },
 );
 
 let isRefreshing = false;

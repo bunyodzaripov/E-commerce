@@ -1,10 +1,18 @@
+import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Layout, PATHS } from "@/components";
-import { Auth, Cart, Home, NotFound, ProductDetail, Products } from "@/pages";
+import { Layout, PATHS, PageLoader } from "@/components";
+// import ScrollToTop from "@/components/common/ScrollToTop";
+
+const Home = lazy(() => import("@/pages/Home"));
+const Products = lazy(() => import("@/pages/Products"));
+const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
+const Cart = lazy(() => import("@/pages/Cart"));
+const Auth = lazy(() => import("@/pages/Auth"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 const AppRoutes = () => {
   return (
-    <>
+    <Suspense fallback={<PageLoader />}>
       {/* <ScrollToTop /> */}
       <Routes>
         <Route element={<Layout />}>
@@ -17,7 +25,7 @@ const AppRoutes = () => {
         </Route>
         <Route path={PATHS.LOGIN} element={<Auth />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };
 

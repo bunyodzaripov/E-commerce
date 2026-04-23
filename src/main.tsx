@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import { Toaster } from "sonner";
+import { ErrorBoundary } from "./components";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,8 +21,10 @@ createRoot(document.getElementById("root")!).render(
   <CookiesProvider defaultSetOptions={{ path: "/" }}>
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-        <App />
-        <Toaster position="top-right" richColors />
+        <ErrorBoundary>
+          <App />
+          <Toaster position="top-right" richColors />
+        </ErrorBoundary>
       </BrowserRouter>
     </QueryClientProvider>
   </CookiesProvider>,
