@@ -1,38 +1,40 @@
 import { Cookies } from "react-cookie";
 
 const cookies = new Cookies();
-
-const TOKEN_KEY = "auth_token";
+const ACCESS_TOKEN_KEY = "access_token";
+const REFRESH_TOKEN_KEY = "refresh_token";
 
 const COOKIE_OPTIONS = {
   path: "/",
-  // Necha kun saqlansin
-  maxAge: 7 * 24 * 60 * 60, // 7 kun (soniyalarda)
-  // Productionda HTTPS majburiy
-  secure: import.meta.env.PROD,
-  // CSRF dan himoya
-  sameSite: "strict" as const,
+  maxAge: 7 * 24 * 60 * 60,
 };
 
 export const tokenStorage = {
   // Token saqlash
-  set: (token: string): void => {
-    cookies.set(TOKEN_KEY, token, COOKIE_OPTIONS);
+  set: (accessToken: string, refreshToken: string): void => {
+    cookies.set(ACCESS_TOKEN_KEY, accessToken, COOKIE_OPTIONS);
+    cookies.set(REFRESH_TOKEN_KEY, refreshToken, COOKIE_OPTIONS);
   },
 
-  // Token olish
+  // Access token olish
   get: (): string | null => {
-    return cookies.get(TOKEN_KEY) ?? null;
+    return cookies.get(ACCESS_TOKEN_KEY) ?? null;
   },
 
-  // Token o'chirish
+  // Refresh token olish
+  getRefresh: (): string | null => {
+    return cookies.get(REFRESH_TOKEN_KEY) ?? null;
+  },
+
+  // Tokenlarni o'chirish
   remove: (): void => {
-    cookies.remove(TOKEN_KEY, { path: "/" });
+    cookies.remove(ACCESS_TOKEN_KEY, { path: "/" });
+    cookies.remove(REFRESH_TOKEN_KEY, { path: "/" });
   },
 
-  // Token muddatini tekshirish
+  // Access token muddatini tekshirish
   isValid: (): boolean => {
-    const token = cookies.get(TOKEN_KEY);
+    const token = cookies.get(ACCESS_TOKEN_KEY);
     if (!token) return false;
 
     try {

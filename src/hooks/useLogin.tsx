@@ -3,6 +3,7 @@ import { auth } from "@/services/auth";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/auth";
+import { tokenStorage } from "@/lib/token";
 
 export const useLogin = () => {
   const { setUser } = useAuthStore();
@@ -15,6 +16,7 @@ export const useLogin = () => {
     onSuccess: (data) => {
       setUser(data);
       navigate("/");
+      tokenStorage.set(data.accessToken, data.refreshToken);
       toast.success(`Welcome back, ${data.firstName}!`);
     },
 

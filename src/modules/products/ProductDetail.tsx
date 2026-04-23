@@ -4,7 +4,13 @@ import { Star, StarHalf, Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Container, Breadcrumb, ReviewCard, UIButton } from "@/components";
+import {
+  Container,
+  Breadcrumb,
+  ReviewCard,
+  UIButton,
+  ProductSkeleton,
+} from "@/components";
 import { useGetProductDetails } from "@/hooks";
 import type { Review } from "@/@types";
 import { useCartStore } from "@/store/cartStore";
@@ -67,13 +73,10 @@ export default function ProductDetail() {
   if (isLoading) {
     return (
       <Container className="py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 animate-pulse">
-          <div className="bg-gray-100 rounded-3xl h-100" />
-          <div className="flex flex-col gap-4">
-            <div className="h-8 bg-gray-100 rounded w-3/4" />
-            <div className="h-4 bg-gray-100 rounded w-1/2" />
-            <div className="h-6 bg-gray-100 rounded w-1/4" />
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <ProductSkeleton key={i} />
+          ))}
         </div>
       </Container>
     );

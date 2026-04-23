@@ -77,3 +77,15 @@ export interface CartItem {
   quantity: number;
   discountPercentage?: number;
 }
+
+// User types
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  image: string;
+  token: string;
+}

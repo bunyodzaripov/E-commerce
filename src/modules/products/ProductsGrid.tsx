@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import {
   Breadcrumb,
   Container,
+  EmptyState,
   Pagination,
   ProductCard,
+  ProductSkeleton,
   SortSelect,
 } from "@/components";
 import { useGetProducts } from "@/hooks";
@@ -107,17 +109,18 @@ export default function ProductsGrid() {
             </div>
           )}
 
-          {/* Products grid */}
+          {/* Products */}
           {isLoading ? (
-            // Skeleton
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-75 bg-gray-100 rounded-2xl animate-pulse"
-                />
+              {Array.from({ length: 4 }).map((_, i) => (
+                <ProductSkeleton key={i} />
               ))}
             </div>
+          ) : products.length === 0 ? (
+            <EmptyState
+              title="No products found"
+              description="Try changing your filters or search query"
+            />
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {products.map((product) => (
@@ -127,14 +130,16 @@ export default function ProductsGrid() {
           )}
 
           {/* Pagination */}
-          <Pagination
-            current={currentPage}
-            total={totalPages}
-            onChange={(page) => {
-              setCurrentPage(page);
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-          />
+          {products.length > 0 && (
+            <Pagination
+              current={currentPage}
+              total={totalPages}
+              onChange={(page) => {
+                setCurrentPage(page);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            />
+          )}
         </div>
       </div>
     </Container>

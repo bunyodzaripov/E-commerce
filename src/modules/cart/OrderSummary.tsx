@@ -13,6 +13,7 @@ export default function OrderSummary({ subtotal }: { subtotal: number }) {
   const delivery = 15;
   const total = subtotal - discount + delivery;
   const { items, clearCart } = useCartStore();
+  console.log(items);
 
   const handleCheckout = async () => {
     try {

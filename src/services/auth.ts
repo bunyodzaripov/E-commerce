@@ -13,4 +13,11 @@ export const auth = {
         expiresInMins: 60,
       })
       .then((r) => r.data),
+  refresh: (refreshToken: string) =>
+    api
+      .post("/auth/refresh", {
+        refreshToken,
+        expiresInMins: 60,
+      })
+      .then((r) => r.data),
 };

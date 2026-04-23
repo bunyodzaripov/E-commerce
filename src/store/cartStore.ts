@@ -46,6 +46,6 @@ export const useCartStore = create<CartStore>()(
 
       clearCart: () => set({ items: [] }),
     }),
-    { name: "cart" }, // localStorage da saqlanadi
+    { name: "cart" },
   ),
 );

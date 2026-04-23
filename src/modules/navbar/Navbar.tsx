@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
-import { Menu, ShoppingCart, User } from "lucide-react";
+import { Menu, ShoppingCart } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Container, PATHS, SearchBar } from "@/components";
 import NavBanner from "./NavBanner";
 import NavLinks from "./NavLinks";
 import Logo from "@/assets/images/logos.png";
 import { useCartStore } from "@/store/cartStore";
-import { useAuthStore } from "@/store/auth";
+import UserMenu from "./UserIcon";
 
 const Navbar = () => {
-  const { user, logout } = useAuthStore();
   const items = useCartStore((state) => state.items);
   const totalCount = items.reduce((acc, i) => acc + i.quantity, 0);
 
@@ -78,14 +77,7 @@ const Navbar = () => {
               </span>
             )}
           </Link>
-          <button className="flex items-center gap-2 text-black font-medium">
-            <User size={24} />
-            {user ? (
-              <span onClick={logout}>Logout</span>
-            ) : (
-              <Link to="/login">Login</Link>
-            )}
-          </button>
+          <UserMenu />
         </div>
       </Container>
     </header>
