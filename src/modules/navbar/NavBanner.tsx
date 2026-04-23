@@ -17,6 +17,7 @@ const NavBanner = () => {
         </Link>
       </p>
       <Button
+        aria-label="Close"
         variant="ghost"
         onClick={() => setIsVisible(false)}
         className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer"

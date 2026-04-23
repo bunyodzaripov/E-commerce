@@ -19,7 +19,7 @@ const Navbar = () => {
       <Container className="h-16 flex items-center justify-between gap-4">
         {/* Mobile Navigation */}
         <Sheet>
-          <SheetTrigger className="md:hidden p-1">
+          <SheetTrigger aria-label="Open menu" className="md:hidden p-1">
             <Menu size={22} className="text-black" />
           </SheetTrigger>
           <SheetContent side="left" className="w-72 p-0">

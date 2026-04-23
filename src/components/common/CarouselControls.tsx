@@ -9,6 +9,7 @@ export default function CarouselControls() {
   return (
     <div className="flex gap-2">
       <Button
+        aria-label="Previous"
         variant="ghost"
         onClick={scrollPrev}
         disabled={!canScrollPrev}
@@ -17,6 +18,7 @@ export default function CarouselControls() {
         <ArrowLeft className="w-6! h-6!" />
       </Button>
       <Button
+        aria-label="Next"
         variant="ghost"
         onClick={scrollNext}
         disabled={!canScrollNext}

@@ -24,7 +24,10 @@ export default function UserMenu() {
 
   return (
     <DropdownMenu modal={false}>
-      <DropdownMenuTrigger className="flex items-center cursor-pointer text-black hover:opacity-70 transition-opacity outline-none">
+      <DropdownMenuTrigger
+        aria-label="Open user menu"
+        className="flex items-center cursor-pointer text-black hover:opacity-70 transition-opacity outline-none"
+      >
         {user?.image ? (
           <img
             src={user.image}

@@ -16,7 +16,7 @@ export default function StyleCard({
 
         <img
           src={image}
-          alt={label}
+          alt="style card image"
           className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
         />
       </div>

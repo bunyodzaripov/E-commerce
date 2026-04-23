@@ -8,7 +8,7 @@ export default function PageLoader() {
         <div className="relative w-20 h-20">
           <div className="absolute inset-0 rounded-full border-4 border-gray-100" />
           <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-black animate-spin" />
-          <div className="absolute inset-0 rounded-full border-4 border-transparent border-b-gray-300 animate-spin [animation-duration:1.5s]" />
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-b-gray-300 animate-spin animation-duration-[1.5s]" />
 
           {/* Ichki icon */}
           <div className="absolute inset-0 flex items-center justify-center">

@@ -73,6 +73,7 @@ export default function Footer() {
             <div className="flex items-center gap-3 mt-2">
               {socialLinks.map(({ icon: Icon, href }) => (
                 <a
+                  araia-label={href}
                   key={href + Icon.name}
                   href={href}
                   className="w-8 h-8 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
@@ -89,9 +90,9 @@ export default function Footer() {
                 key={section.title}
                 className="flex flex-col md:justify-between"
               >
-                <h4 className="text-sm md:text-base font-medium text-black uppercase tracking-widest">
+                <h3 className="text-sm md:text-base font-medium text-black uppercase tracking-widest">
                   {section.title}
-                </h4>
+                </h3>
                 <ul className="flex flex-col gap-2 mt-4 md:mt-6">
                   {section.links.map((link) => (
                     <li key={link}>
@@ -118,7 +119,12 @@ export default function Footer() {
 
           <div className="flex items-center gap-2 flex-wrap justify-center">
             {paymentMethods.map((method, id) => (
-              <img src={method} key={id} className="w-14 h-auto" />
+              <img
+                src={method}
+                key={id}
+                className="w-14 h-auto"
+                alt="payment method"
+              />
             ))}
           </div>
         </div>
