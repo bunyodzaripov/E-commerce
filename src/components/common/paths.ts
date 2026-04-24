@@ -1,10 +1,11 @@
 export const PATHS = {
-  HOME: "/",
-  PRODUCTS: "/products",
-  PRODUCTS_CATEGORY: "/products/:category",
-  PRODUCT: "/product/:id",
-  CART: "/cart",
-  LOGIN: "/login",
+  HOME: "/:lang",
+  PRODUCTS: "/:lang/products",
+  PRODUCTS_CATEGORY: "/:lang/products/:category",
+  PRODUCT: "/:lang/product/:id",
+  CART: "/:lang/cart",
+  LOGIN: "/:lang/login",
 } as const;
 
-export const getProductPath = (id: number) => `/product/${id}`;
+// Link yasash uchun helper
+export const getPath = (lang: string, path: string) => `/${lang}${path}`;

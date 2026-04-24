@@ -20,14 +20,14 @@ export default function Pagination({
   };
 
   return (
-    <div className="flex items-center justify-between mt-8 md:mt-12">
+    <div className="flex items-center justify-center gap-2 mt-8 md:mt-12">
       <Button
         variant="outline"
         className="rounded-lg text-sm gap-1"
         onClick={() => onChange(current - 1)}
         disabled={current === 1}
       >
-        <ChevronLeft className="w-4 h-4" /> Previous
+        <ChevronLeft className="w-4 h-4" />
       </Button>
 
       <div className="flex items-center gap-1">
@@ -58,7 +58,7 @@ export default function Pagination({
         onClick={() => onChange(current + 1)}
         disabled={current === total}
       >
-        Next <ChevronRight className="w-4 h-4" />
+        <ChevronRight className="w-4 h-4" />
       </Button>
     </div>
   );

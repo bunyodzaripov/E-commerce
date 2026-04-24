@@ -1,0 +1,150 @@
+{
+  "nav": {
+    "navbanner": "Ro‘yxatdan o‘ting va birinchi buyurtmangiz uchun 20% chegirmaga ega bo‘ling. <1>Hozir ro‘yxatdan o‘ting</1>",
+    "shop": "Do'kon",
+    "on_sale": "Chegirmalar",
+    "new_arrivals": "Yangi kelganlar",
+    "products": "Mahsulotlar",
+    "categories": {
+      "men_clothing": "Erkaklar kiyimi",
+      "women_clothing": "Ayollar kiyimi",
+      "electronics": "Elektronika",
+      "jewelery": "Zargarlik buyumlari"
+    },
+    "placeholder": "Mahsulotlarni qidirish...",
+    "logout": "Chiqish",
+    "login": "Kirish"
+  },
+
+  "hero": {
+    "title": "Sizning didingizga mos kiyimlarni toping",
+    "description": "Sizning betakrorligingizni ta'kidlaydigan va uslubingizga mos keladigan, mehr bilan ishlangan turli xil kiyimlarimiz kolleksiyasidan bahramand bo'ling.",
+    "button": "Hozir xarid qilish",
+    "stats": {
+      "brands": "Xalqaro brendlar",
+      "products": "Yuqori sifatli mahsulotlar",
+      "customers": "Mamnun mijozlar"
+    }
+  },
+
+  "products": {
+    "new_arrivals": "Yangi kelganlar",
+    "top_selling": "Eng ko'p sotilganlar",
+    "view_all": "Hammasini ko'rish",
+    "happy_customers": "Bizning mamnun mijozlarimiz",
+    "filters": "Filtrlar",
+    "categories": "Kategoriyalar",
+    "price": "Narx",
+    "colors": "Ranglar",
+    "size": "O'lcham",
+    "dress_style": "Kiyinish uslubi",
+    "apply": "Filtrlarni qo'llash",
+    "pagination_info": "{{total}} ta mahsulotdan 1-10 gacha ko'rsatilmoqda"
+  },
+
+  "product_detail": {
+    "add_to_cart": "Savatchaga qo'shish",
+    "details": "Mahsulot tafsilotlari",
+    "reviews": "Reyting va sharhlar",
+    "faqs": "FAQ",
+    "reviews_title": "Barcha sharhlar",
+    "write_review": "Sharh qoldirish",
+    "no_faq": "Ushbu mahsulot uchun savollar mavjud emas."
+  },
+
+  "details_info": {
+    "brand": "Brend",
+    "category": "Kategoriya",
+    "stock": "Omborda",
+    "stock_value": "{{count}} ta",
+    "sku": "SKU (Artikul)",
+    "weight": "Vazni",
+    "weight_value": "{{amount}} gr"
+  },
+
+  "sort": {
+    "label": "Saralash:",
+    "options": {
+      "popular": "Eng ommabop",
+      "price_low": "Narx: Arzonidan qimmatiga",
+      "price_high": "Narx: Qimmatidan arzoniga",
+      "alphabetical": "A - Z"
+    }
+  },
+
+  "styles": {
+    "title": "Kiyinish uslubi bo'yicha ko'rib chiqing",
+    "casual": "Kundalik",
+    "formal": "Rasmiy",
+    "party": "Bazm",
+    "gym": "Sport"
+  },
+
+  "cart": {
+    "title": "Sizning savatchangiz",
+    "empty": "Savatchangiz bo‘sh.",
+    "description": "Mahsulotlarimizni ko‘zdan kechiring va o‘zingizga yoqqanini qo‘shing",
+    "action": "Xarid qilishni davom ettirish",
+    "orderSummary": "Buyurtma tafsilotlari",
+    "subtotal": "Oraliq jami",
+    "discount": "Chegirma",
+    "delivery": "Yetkazib berish",
+    "total": "Jami",
+    "promo": "Promokod qo‘shish",
+    "apply": "Qo‘llash",
+    "checkout": "To‘lovga o‘tish"
+  },
+
+  "footer": {
+    "newsletter": "So'nggi takliflarimizdan xabardor bo'ling",
+    "subscribe": "Yangiliklarga obuna bo'lish",
+    "placeholder": "Email manzilingizni kiriting",
+    "description": "Bizda sizning uslubingizga mos keladigan va kiyishdan faxrlanadigan kiyimlar mavjud. Ayollardan erkaklargacha.",
+    "rights": "shop.co © 2000-2026, Barcha huquqlar himoyalangan",
+    "sections": {
+      "company": {
+        "title": "Kompaniya",
+        "about": "Haqida",
+        "features": "Imkoniyatlar",
+        "works": "Ishlar",
+        "career": "Karyera"
+      },
+      "help": {
+        "title": "Yordam",
+        "support": "Mijozlarni qo'llab-quvvatlash",
+        "delivery": "Yetkazib berish tafsilotlari",
+        "terms": "Foydalanish shartlari",
+        "privacy": "Maxfiylik siyosati"
+      },
+      "faq": {
+        "title": "FAQ",
+        "account": "Hisob",
+        "manage": "Yetkazib berishni boshqarish",
+        "orders": "Buyurtmalar",
+        "payments": "To'lovlar"
+      },
+      "resources": {
+        "title": "Resurslar",
+        "ebooks": "Bepul elektron kitoblar",
+        "tutorial": "Dasturlash bo'yicha qo'llanma",
+        "blog": "Blog - Qanday qilish kerak",
+        "playlist": "Youtube playlist"
+      }
+    }
+  },
+
+  "empty": {
+    "title": "Mahsulotlar topilmadi",
+    "description": "Filtrlarni o'zgartirib yoki qidiruv so'zini qaytadan yozib ko'ring"
+  },
+
+  "toast": {
+    "login": "Xush kelibsiz, {{name}}!",
+    "logout": "Tizimdan muvaffaqiyatli chiqdingiz!",
+    "info": "Iltimos, barcha maydonlarni to'ldiring!",
+    "removed": "Mahsulot savatchadan olib tashlandi!",
+    "ordered": "Buyurtmangiz muvaffaqiyatli qabul qilindi!",
+    "error": "Xatolik yuz berdi!",
+    "added": "Mahsulot savatchaga qo'shildi!"
+  }
+}

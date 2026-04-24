@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/store/auth";
 import { tokenStorage } from "@/lib/token";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { LogOut, LogIn, User } from "lucide-react";
 import {
   DropdownMenu,
@@ -10,16 +10,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export default function UserMenu() {
+  const { lang } = useParams<{ lang: string }>();
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
+
+  const { t } = useTranslation();
 
   const handleLogout = () => {
     tokenStorage.remove();
     logout();
-    toast.success("Logged out successfully!");
-    navigate("/");
+    toast.success(t("toast.logout"));
+    navigate(`/${lang ?? "en"}`);
   };
 
   return (
@@ -67,17 +71,17 @@ export default function UserMenu() {
               className="flex items-center gap-2 text-red-500 hover:text-red-600 hover:bg-red-50 rounded-xl cursor-pointer px-3 py-2.5"
             >
               <LogOut className="w-4 h-4" />
-              <span className="text-sm font-medium">Logout</span>
+              <span className="text-sm font-medium">{t("nav.logout")}</span>
             </DropdownMenuItem>
           </>
         ) : (
           // Login bo'lmagan
           <DropdownMenuItem
-            onClick={() => navigate("/login")}
+            onClick={() => navigate(`/${lang ?? "en"}/login`)}
             className="flex items-center gap-2 rounded-xl cursor-pointer px-3 py-2.5"
           >
             <LogIn className="w-4 h-4" />
-            <span className="text-sm font-medium">Sign In</span>
+            <span className="text-sm font-medium">{t("nav.login")}</span>
           </DropdownMenuItem>
         )}
       </DropdownMenuContent>

@@ -1,14 +1,17 @@
 import type { CartItem } from "@/@types";
 import { useCartStore } from "@/store/cartStore";
 import { Minus, Plus, Trash2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 
 export default function CartItem({ item }: { item: CartItem }) {
   const { removeItem, updateQuantity } = useCartStore();
 
+  const { t } = useTranslation();
+
   const handleRemove = () => {
     removeItem(item.id, item.size);
-    toast.success("Item removed from cart!");
+    toast.success(t("toast.removed"));
   };
   return (
     <div className="flex items-center gap-4 py-5 border-b border-gray-100 last:border-none">
@@ -37,17 +40,19 @@ export default function CartItem({ item }: { item: CartItem }) {
 
         <div className="flex flex-col gap-0.5 mt-1">
           <p className="text-xs text-gray-400">
-            Size: <span className="text-gray-600">{item.size}</span>
+            {t("products.size")}:{" "}
+            <span className="text-gray-600">{item.size}</span>
           </p>
           {item.color && (
             <p className="text-xs text-gray-400">
-              Color: <span className="text-gray-600">{item.color}</span>
+              {t("products.colors")}:{" "}
+              <span className="text-gray-600">{item.color}</span>
             </p>
           )}
         </div>
 
         <div className="flex items-center justify-between mt-3">
-          <span className="text-base md:text-lg font-black text-black">
+          <span className="text-base md:text-lg font-bold text-black">
             ${item.price}
           </span>
 

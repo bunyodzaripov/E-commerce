@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-
-const sortOptions = [
-  { label: "Most Popular", sortBy: "rating", order: "desc" },
-  { label: "Price: Low to High", sortBy: "price", order: "asc" },
-  { label: "Price: High to Low", sortBy: "price", order: "desc" },
-  { label: "A - Z", sortBy: "title", order: "asc" },
-];
+import { useTranslation } from "react-i18next";
 
 interface SortSelectProps {
   sortBy: string;
@@ -20,13 +14,38 @@ export default function SortSelect({
   onChange,
 }: SortSelectProps) {
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+
+  const sortOptions = [
+    {
+      label: t("sort.options.popular"),
+      sortBy: "rating",
+      order: "desc",
+    },
+    {
+      label: t("sort.options.price_low"),
+      sortBy: "price",
+      order: "asc",
+    },
+    {
+      label: t("sort.options.price_high"),
+      sortBy: "price",
+      order: "desc",
+    },
+    {
+      label: t("sort.options.alphabetical"),
+      sortBy: "title",
+      order: "asc",
+    },
+  ];
+
   const selected = sortOptions.find(
     (o) => o.sortBy === sortBy && o.order === order,
   );
 
   return (
     <div className="hidden md:flex relative text-sm md:text-base text-gray-500">
-      Sort by:
+      {t("sort.label")}
       <button
         onClick={() => setOpen(!open)}
         className="font-semibold text-black flex items-center gap-1 ml-1"

@@ -5,9 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { useLogin } from "@/hooks";
+import { useTranslation } from "react-i18next";
 
 export default function LoginPage() {
   const { mutate, isPending } = useLogin();
+
+  const { t } = useTranslation();
 
   const [form, setForm] = useState({ username: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +21,7 @@ export default function LoginPage() {
 
   const handleLogin = () => {
     if (!form.username || !form.password) {
-      toast.info("Please fill in all fields!");
+      toast.info(t("toast.info"));
       return;
     }
     try {
@@ -33,19 +36,13 @@ export default function LoginPage() {
       <div className="hidden md:flex w-1/2 bg-black flex-col justify-between p-12">
         <Link to="/" className="flex items-center gap-2">
           <ShoppingBag className="w-6 h-6 text-white" />
-          <span
-            className="text-white text-2xl font-black uppercase tracking-tight"
-            style={{ fontFamily: "'Arial Black', 'Arial Bold', sans-serif" }}
-          >
+          <span className="text-white text-2xl font-bold uppercase tracking-tight">
             Shop.co
           </span>
         </Link>
 
         <div className="flex flex-col gap-6">
-          <h1
-            className="text-5xl font-black text-white uppercase leading-tight"
-            style={{ fontFamily: "'Arial Black', 'Arial Bold', sans-serif" }}
-          >
+          <h1 className="font-display text-5xl font-bold text-white uppercase leading-tight">
             Find Clothes
             <br />
             That Match
@@ -65,7 +62,7 @@ export default function LoginPage() {
             { value: "30,000+", label: "Customers" },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col">
-              <span className="text-white text-2xl font-black">
+              <span className="text-white text-2xl font-bold">
                 {stat.value}
               </span>
               <span className="text-gray-500 text-xs">{stat.label}</span>
@@ -78,19 +75,13 @@ export default function LoginPage() {
         <div className="w-full max-w-md flex flex-col gap-8">
           <Link to="/" className="flex md:hidden items-center gap-2">
             <ShoppingBag className="w-5 h-5 text-black" />
-            <span
-              className="text-black text-xl font-black uppercase"
-              style={{ fontFamily: "'Arial Black', 'Arial Bold', sans-serif" }}
-            >
+            <span className="text-black text-xl font-bold uppercase">
               Shop.co
             </span>
           </Link>
 
           <div className="flex flex-col gap-2">
-            <h2
-              className="text-3xl md:text-4xl font-black text-black uppercase"
-              style={{ fontFamily: "'Arial Black', 'Arial Bold', sans-serif" }}
-            >
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-black uppercase">
               Welcome Back
             </h2>
             <p className="text-sm text-gray-400">

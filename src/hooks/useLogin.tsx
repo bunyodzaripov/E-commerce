@@ -4,9 +4,11 @@ import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/store/auth";
 import { tokenStorage } from "@/lib/token";
+import { useTranslation } from "react-i18next";
 
 export const useLogin = () => {
   const { setUser } = useAuthStore();
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -17,7 +19,7 @@ export const useLogin = () => {
       setUser(data);
       navigate("/");
       tokenStorage.set(data.accessToken, data.refreshToken);
-      toast.success(`Welcome back, ${data.firstName}!`);
+      toast.success(t("toast.login", { name: data.firstName }));
     },
 
     onError: (error) => {

@@ -1,14 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Menu, ShoppingCart } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Container, PATHS, SearchBar } from "@/components";
+import { Container, SearchBar } from "@/components";
 import NavBanner from "./NavBanner";
 import NavLinks from "./NavLinks";
 import Logo from "@/assets/images/logos.png";
 import { useCartStore } from "@/store/cartStore";
 import UserMenu from "./UserIcon";
+import LangSwitcher from "./LangSwitcher";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
+  const { lang } = useParams<{ lang: string }>();
+  const { t } = useTranslation();
+
+  const mobileLinks = [
+    { label: "nav.shop", path: "products" },
+    { label: "nav.on_sale", path: "products/on-sale" },
+    { label: "nav.new_arrivals", path: "products/new-arrivals" },
+    { label: "nav.products", path: "products" },
+  ];
+
   const items = useCartStore((state) => state.items);
   const totalCount = items.reduce((acc, i) => acc + i.quantity, 0);
 
@@ -25,7 +37,7 @@ const Navbar = () => {
           <SheetContent side="left" className="w-72 p-0">
             {/* Mobile Header */}
             <div className="px-4 py-4">
-              <Link to={PATHS.HOME}>
+              <Link to={`/${lang ?? "en"}`}>
                 <img src={Logo} alt="logo" className="max-w-35 h-auto" />
               </Link>
             </div>
@@ -39,20 +51,20 @@ const Navbar = () => {
 
             {/* Mobile Links */}
             <nav className="flex flex-col px-4 py-4 gap-1">
-              {["Shop", "On Sale", "New Arrivals", "Brands"].map((link) => (
+              {mobileLinks.map((link) => (
                 <Link
-                  key={link}
-                  to={PATHS.PRODUCTS}
+                  key={link.label}
+                  to={`/${lang ?? "en"}/${link.path}`}
                   className="text-black font-medium text-base py-3 border-b border-gray-100 hover:opacity-70 transition-opacity"
                 >
-                  {link}
+                  {t(link.label)}
                 </Link>
               ))}
             </nav>
           </SheetContent>
         </Sheet>
 
-        <Link to={PATHS.HOME} className="max-w-40">
+        <Link to={`/${lang ?? "en"}`} className="max-w-40">
           <img src={Logo} alt="logo" className="w-full h-auto" />
         </Link>
 
@@ -67,7 +79,7 @@ const Navbar = () => {
         {/* nav actions */}
         <div className="flex gap-4">
           <Link
-            to={PATHS.CART}
+            to={`/${lang ?? "en"}/cart`}
             className="flex items-center relative gap-2 text-black font-medium"
           >
             <ShoppingCart size={24} />
@@ -78,6 +90,7 @@ const Navbar = () => {
             )}
           </Link>
           <UserMenu />
+          <LangSwitcher />
         </div>
       </Container>
     </header>

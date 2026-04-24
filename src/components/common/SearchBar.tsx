@@ -1,12 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDebounce } from "@/hooks";
 import { useSearchProducts } from "@/hooks";
 import type { Product } from "@/@types";
+import { useTranslation } from "react-i18next";
 
 export default function SearchBar() {
+  const { lang } = useParams<{ lang: string }>();
+  const { t } = useTranslation();
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState(false);
   const debouncedSearch = useDebounce(search, 400);
@@ -29,7 +32,7 @@ export default function SearchBar() {
       <div className="flex items-center w-full bg-gray-100 rounded-full gap-2">
         <Search size={16} className="text-gray-400 shrink-0" />
         <Input
-          placeholder="Search for products..."
+          placeholder={t("nav.placeholder")}
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
@@ -51,7 +54,7 @@ export default function SearchBar() {
             data?.products?.map((product: Product) => (
               <Link
                 key={product.id}
-                to={`/product/${product.id}`}
+                to={`/${lang ?? "en"}/product/${product.id}`}
                 onClick={() => {
                   setOpen(false);
                   setSearch("");

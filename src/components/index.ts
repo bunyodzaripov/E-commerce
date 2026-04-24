@@ -17,6 +17,7 @@ import ProductSkeleton from "./common/ProductSkeleton";
 import EmptyState from "./common/EmptyState";
 import { ErrorBoundary } from "./common/ErrorBoundary";
 import PageLoader from "./common/PageLoader";
+import LangLayout from "./common/LangLayout";
 
 export {
   PATHS,
@@ -38,4 +39,5 @@ export {
   EmptyState,
   ErrorBoundary,
   PageLoader,
+  LangLayout,
 };

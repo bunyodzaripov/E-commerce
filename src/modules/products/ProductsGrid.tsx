@@ -14,6 +14,7 @@ import { useGetProducts } from "@/hooks";
 import type { Product } from "@/@types";
 import { FilterSidebar } from "@/modules";
 import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const LIMIT = 9;
 
@@ -39,6 +40,8 @@ export default function ProductsGrid() {
     order,
     category,
   });
+
+  const { t } = useTranslation();
 
   // Pagination
   const products: Product[] = data?.products ?? [];
@@ -68,13 +71,13 @@ export default function ProductsGrid() {
         <div className="w-full md:w-[70%]">
           {/* Top bar */}
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-[20px] md:text-[28px] lg:text-[32px] font-bold text-black">
+            <h1 className="font-display text-[20px] md:text-[28px] lg:text-[32px] font-bold text-black">
               {categoryName}
             </h1>
 
             <div className="flex items-center gap-3">
               <p className="text-sm md:text-base text-gray-400">
-                Showing 1-10 of {data?.total} Products
+                {t("products.pagination_info", { total: data?.total ?? 0 })}
               </p>
 
               {/* Sort */}
@@ -117,10 +120,7 @@ export default function ProductsGrid() {
               ))}
             </div>
           ) : products.length === 0 ? (
-            <EmptyState
-              title="No products found"
-              description="Try changing your filters or search query"
-            />
+            <EmptyState />
           ) : (
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {products.map((product) => (

@@ -13,7 +13,7 @@ const Loading = () => {
         </div>
 
         <div className="mt-8 flex flex-col items-center gap-2">
-          <h2 className="text-zinc-100 text-xl font-medium tracking-widest uppercase animate-pulse">
+          <h2 className="font-display text-zinc-100 text-xl font-medium tracking-widest uppercase animate-pulse">
             Yuklanmoqda
           </h2>
 

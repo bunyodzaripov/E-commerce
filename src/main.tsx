@@ -6,6 +6,7 @@ import App from "./App";
 import "./index.css";
 import { Toaster } from "sonner";
 import { ErrorBoundary } from "./components";
+import "@/i18n";
 
 const queryClient = new QueryClient({
   defaultOptions: {

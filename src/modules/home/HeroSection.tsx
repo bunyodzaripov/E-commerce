@@ -1,33 +1,40 @@
 import { Container, UIButton } from "@/components";
 import { Brand1, Brand2, Brand3, Brand4, Brand5, HeroBg } from "@/assets";
-const stats = [
-  { value: "200+", label: "International Brands" },
-  { value: "2,000+", label: "High-Quality Products" },
-  { value: "30,000+", label: "Happy Customers" },
-];
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
 export default function HeroSection() {
+  const { lang } = useParams<{ lang: string }>();
+  const { t, i18n } = useTranslation();
+  const isRu = i18n.language === "ru";
+
+  const stats = [
+    { value: "200+", label: t("hero.stats.brands") },
+    { value: "2,000+", label: t("hero.stats.products") },
+    { value: "30,000+", label: t("hero.stats.customers") },
+  ];
+
   return (
     <section className="bg-[#F2F0F1]">
       <Container>
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between pt-10 gap-6 lg:gap-13.5">
           <div className="flex flex-col gap-4 lg:gap-5">
-            <h1 className="text-[24px] md:text-[36px] md:max-w-144.25 lg:text-[64px] font-black leading-none tracking-tight text-black uppercase">
-              Find Clothes That Matches Your Style
+            <h1
+              className={`font-display leading-none tracking-tight text-black uppercase text-[24px] md:text-[36px] lg:text-[64px] ${isRu ? "lg:text-[58px] md:max-w-162.5" : "md:max-w-144.25"} text-balance`}
+            >
+              {t("hero.title")}
             </h1>
 
             <p className="text-sm md:max-w-144.25 lg:text-base text-black/60 md:leading-relaxed">
-              Browse through our diverse range of meticulously crafted garments,
-              designed to bring out your individuality and cater to your sense
-              of style.
+              {t("hero.description")}
             </p>
 
             <div className="flex justify-center lg:justify-start">
               <UIButton
-                to="/products"
+                to={`/${lang ?? "en"}/products`}
                 className="bg-black text-white hover:bg-gray-800 border-none w-full md:w-auto"
               >
-                Shop Now
+                {t("hero.button")}
               </UIButton>
             </div>
 

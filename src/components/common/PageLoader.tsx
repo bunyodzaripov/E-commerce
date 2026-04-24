@@ -18,10 +18,7 @@ export default function PageLoader() {
 
         {/* Matn */}
         <div className="flex flex-col items-center gap-1">
-          <span
-            className="text-lg font-black text-black uppercase tracking-widest"
-            style={{ fontFamily: "'Arial Black', 'Arial Bold', sans-serif" }}
-          >
+          <span className="font-display text-lg font-bold text-black uppercase tracking-widest">
             Shop.co
           </span>
 

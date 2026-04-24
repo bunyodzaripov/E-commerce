@@ -1,35 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { PATHS } from "@/components";
 
 const categories = [
-  "men's clothing",
-  "women's clothing",
-  "electronics",
-  "jewelery",
+  { id: "men's clothing", label: "nav.categories.men_clothing" },
+  { id: "women's clothing", label: "nav.categories.women_clothing" },
+  { id: "electronics", label: "nav.categories.electronics" },
+  { id: "jewelery", label: "nav.categories.jewelery" },
 ];
 
 const NavLinks = () => {
+  const { lang } = useParams<{ lang: string }>();
+  const { t } = useTranslation();
+
   return (
     <nav className="hidden md:flex items-center gap-6">
       <DropdownMenu>
         <DropdownMenuTrigger className="flex items-center gap-1 text-black font-medium hover:opacity-70 transition-opacity outline-none">
-          Shop <ChevronDown size={16} />
+          {t("nav.shop")} <ChevronDown size={16} />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-48 rounded-xl">
           {categories.map((cat) => (
-            <DropdownMenuItem key={cat} className="p-0">
+            <DropdownMenuItem key={cat.id} className="p-0">
               <Link
-                to={`${PATHS.PRODUCTS}?category=${cat}`}
+                to={`/${lang ?? "en"}/products/${cat.id}`}
                 className="w-full px-2 py-1.5 capitalize cursor-pointer"
               >
-                {cat}
+                {t(cat.label)}
               </Link>
             </DropdownMenuItem>
           ))}
@@ -40,19 +43,21 @@ const NavLinks = () => {
         href="#top-selling"
         className="text-black font-medium hover:text-gray-500 transition-opacity"
       >
-        On Sale
+        {t("nav.on_sale")}
       </a>
+
       <a
         href="#new-arrivals"
         className="text-black font-medium hover:text-gray-500 transition-opacity"
       >
-        New Arrivals
+        {t("nav.new_arrivals")}
       </a>
+
       <Link
-        to={PATHS.PRODUCTS}
+        to={`/${lang ?? "en"}/products`}
         className="text-black font-medium hover:text-gray-500 transition-opacity"
       >
-        Products
+        {t("nav.products")}
       </Link>
     </nav>
   );

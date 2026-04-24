@@ -1,0 +1,150 @@
+{
+  "nav": {
+    "navbanner": "Sign up and get 20% off to your first order. <1>Sign Up Now</1>",
+    "shop": "Shop",
+    "on_sale": "On Sale",
+    "new_arrivals": "New Arrivals",
+    "products": "Products",
+    "categories": {
+      "men_clothing": "Men's Clothing",
+      "women_clothing": "Women's Clothing",
+      "electronics": "Electronics",
+      "jewelery": "Jewelery"
+    },
+    "placeholder": "Search for products...",
+    "logout": "Logout",
+    "login": "Login"
+  },
+
+  "hero": {
+    "title": "Find Clothes That Matches Your Style",
+    "description": "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your senseof style.",
+    "button": "Shop Now",
+    "stats": {
+      "brands": "International Brands",
+      "products": "High-Quality Products",
+      "customers": "Happy Customers"
+    }
+  },
+
+  "products": {
+    "new_arrivals": "New Arrivals",
+    "top_selling": "Top Selling",
+    "view_all": "View All",
+    "happy_customers": "Our Happy Customers",
+    "filters": "Filters",
+    "categories": "Categories",
+    "price": "Price",
+    "colors": "Colors",
+    "size": "Size",
+    "dress_style": "Dress Style",
+    "apply": "Apply Filters",
+    "pagination_info": "Showing 1-10 of {{total}} Products"
+  },
+
+  "product_detail": {
+    "add_to_cart": "Add to Cart",
+    "details": "Product Details",
+    "reviews": "Rating & Reviews",
+    "faqs": "FAQs",
+    "reviews_title": "All Reviews",
+    "write_review": "Write a Review",
+    "no_faq": "No FAQs available for this product."
+  },
+
+  "details_info": {
+    "brand": "Brand",
+    "category": "Category",
+    "stock": "Stock",
+    "stock_value": "{{count}} items",
+    "sku": "SKU",
+    "weight": "Weight",
+    "weight_value": "{{amount}}g"
+  },
+
+  "sort": {
+    "label": "Sort by:",
+    "options": {
+      "popular": "Most Popular",
+      "price_low": "Price: Low to High",
+      "price_high": "Price: High to Low",
+      "alphabetical": "A - Z"
+    }
+  },
+
+  "styles": {
+    "title": "Browse by Dress Style",
+    "casual": "Casual",
+    "formal": "Formal",
+    "party": "Party",
+    "gym": "Gym"
+  },
+
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty.",
+    "description": "Browse our products and add something you like",
+    "action": "Continue Shopping",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "delivery": "Delivery Fee",
+    "total": "Total",
+    "promo": "Add promo code",
+    "apply": "Apply",
+    "checkout": "Go to Checkout"
+  },
+
+  "footer": {
+    "newsletter": "Stay Upto Date About Our Latest Offers",
+    "subscribe": "Subscribe to Newsletter",
+    "placeholder": "Enter your email address",
+    "description": "We have clothes that suit your style and which you're proud to wear. From women to men.",
+    "rights": "shop.co © 2000-2026, All Rights Reserved",
+    "sections": {
+      "company": {
+        "title": "Company",
+        "about": "About",
+        "features": "Features",
+        "works": "Works",
+        "career": "Career"
+      },
+      "help": {
+        "title": "Help",
+        "support": "Customer Support",
+        "delivery": "Delivery Details",
+        "terms": "Terms & Conditions",
+        "privacy": "Privacy Policy"
+      },
+      "faq": {
+        "title": "FAQ",
+        "account": "Account",
+        "manage": "Manage Deliveries",
+        "orders": "Orders",
+        "payments": "Payments"
+      },
+      "resources": {
+        "title": "Resources",
+        "ebooks": "Free eBooks",
+        "tutorial": "Development Tutorial",
+        "blog": "How to - Blog",
+        "playlist": "Youtube Playlist"
+      }
+    }
+  },
+
+  "empty": {
+    "title": "No products found",
+    "description": "Try changing your filters or search query"
+  },
+
+  "toast": {
+    "login": "Welcome back, {{name}}!",
+    "logout": "Logged out successfully!",
+    "info": "Please fill in all fields!",
+    "removed": "Item removed from cart!",
+    "ordered": "Order placed successfully!",
+    "error": "Something went wrong!",
+    "added": "Product added to cart!"
+  }
+}

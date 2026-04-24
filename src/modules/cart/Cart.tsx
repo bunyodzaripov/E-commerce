@@ -2,10 +2,15 @@ import { Container, Breadcrumb, EmptyState } from "@/components";
 import { useCartStore } from "@/store/cartStore";
 import CartItem from "./Cartitem";
 import OrderSummary from "./OrderSummary";
+import { useTranslation } from "react-i18next";
+import { useParams } from "react-router-dom";
 
 // ---- Main ----
 export default function CartPage() {
   const { items } = useCartStore();
+  const { t } = useTranslation();
+
+  const { lang } = useParams<{ lang: string }>();
 
   const subtotal = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -19,18 +24,15 @@ export default function CartPage() {
       {/* Breadcrumb */}
       <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Cart" }]} />
 
-      <h1
-        className="text-3xl md:text-[40px] font-black text-black uppercase mt-4 mb-8"
-        style={{ fontFamily: "'Arial Black', 'Arial Bold', sans-serif" }}
-      >
-        Your Cart
+      <h1 className="text-3xl font-display md:text-[40px] font-bold text-black uppercase mt-4 mb-8">
+        {t("cart.title")}
       </h1>
 
       {items.length === 0 ? (
         <EmptyState
-          title="Your cart is empty"
-          description="Browse our products and add something you like"
-          action={{ label: "Continue Shopping", href: "/products" }}
+          title={t("cart.empty")}
+          description={t("cart.description")}
+          action={{ label: t("cart.action"), href: `/${lang}/products` }}
         />
       ) : (
         <div className="flex flex-col md:flex-row gap-6 md:gap-10">

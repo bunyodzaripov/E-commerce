@@ -5,20 +5,23 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useGetProducts } from "@/hooks/useProducts";
+import { useTranslation } from "react-i18next";
 
 export default function HappyCustomers() {
   const { data, isLoading, error } = useGetProducts();
+  const { t } = useTranslation();
 
   if (error) return <p>{error.message}</p>;
-  if (isLoading) return <p>Yuklanmoqda...</p>;
+  if (isLoading) return <Skeleton />;
   const reviews = data.products.flatMap((product: Review) => product.reviews);
 
   return (
     <section className="mt-13 md:mt-20">
       <Carousel opts={{ align: "start", loop: false }}>
         <Container className="flex items-center justify-between">
-          <Title title="Our Happy Customers" className="text-start" />
+          <Title title={t("products.happy_customers")} className="text-start" />
           <CarouselControls />
         </Container>
 

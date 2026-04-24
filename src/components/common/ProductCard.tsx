@@ -1,16 +1,17 @@
 import type { Product } from "@/@types";
 import { Badge } from "@/components/ui/badge";
 import { Star, StarHalf } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function ProductCard({ product }: { product: Product }) {
+  const { lang } = useParams<{ lang: string }>();
   // Discounted price
   const discountedPrice = product.discountPercentage
     ? Math.round(product.price * (1 - product.discountPercentage / 100))
     : null;
 
   return (
-    <Link to={`/product/${product.id}`}>
+    <Link to={`/${lang ?? "en"}/product/${product.id}`}>
       <div className="flex flex-col gap-3 cursor-pointer group">
         {/* Image */}
         <div className="bg-[#F0EEED] rounded-2xl overflow-hidden flex items-center justify-center p-4">
@@ -31,7 +32,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
         {/* Price */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-lg md:text-xl font-black text-black">
+          <span className="text-lg md:text-xl font-bold text-black">
             ${discountedPrice ?? product.price}
           </span>
           {discountedPrice && (

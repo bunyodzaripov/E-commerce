@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
-import { Layout, PATHS, PageLoader } from "@/components";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { Layout, PageLoader, LangLayout } from "@/components";
 // import ScrollToTop from "@/components/common/ScrollToTop";
 
 const Home = lazy(() => import("@/pages/Home"));
@@ -15,15 +15,26 @@ const AppRoutes = () => {
     <Suspense fallback={<PageLoader />}>
       {/* <ScrollToTop /> */}
       <Routes>
-        <Route element={<Layout />}>
-          <Route path={PATHS.HOME} element={<Home />} />
-          <Route path={PATHS.PRODUCTS} element={<Products />} />
-          <Route path={PATHS.PRODUCTS_CATEGORY} element={<Products />} />
-          <Route path={PATHS.PRODUCT} element={<ProductDetail />} />
-          <Route path={PATHS.CART} element={<Cart />} />
-          <Route path="*" element={<NotFound />} />
+        {/* Default — localStorage dagi tilga redirect */}
+        <Route
+          path="/"
+          element={
+            <Navigate to={`/${localStorage.getItem("lang") || "en"}`} replace />
+          }
+        />
+
+        {/* Til prefix bilan */}
+        <Route path="/:lang" element={<LangLayout />}>
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="products" element={<Products />} />
+            <Route path="products/:category" element={<Products />} />
+            <Route path="product/:id" element={<ProductDetail />} />
+            <Route path="cart" element={<Cart />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route path="login" element={<Auth />} />
         </Route>
-        <Route path={PATHS.LOGIN} element={<Auth />} />
       </Routes>
     </Suspense>
   );

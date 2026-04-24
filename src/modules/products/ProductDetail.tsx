@@ -15,6 +15,7 @@ import { useGetProductDetails } from "@/hooks";
 import type { Review } from "@/@types";
 import { useCartStore } from "@/store/cartStore";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 // ---- Rating Stars ----
 function RatingStars({ rating }: { rating: number }) {
@@ -34,6 +35,7 @@ function RatingStars({ rating }: { rating: number }) {
 export default function ProductDetail() {
   const { id } = useParams<{ id: string }>();
   const { data: product, isLoading } = useGetProductDetails(Number(id));
+  const { t } = useTranslation();
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState("");
@@ -56,9 +58,9 @@ export default function ProductDetail() {
         color: product.color || "",
         quantity,
       });
-      toast.success("Product added to cart!");
+      toast.success(t("toast.added"));
     } catch {
-      toast.error("Something went wrong!");
+      toast.error(t("toast.error"));
     }
   };
 
@@ -84,6 +86,28 @@ export default function ProductDetail() {
 
   if (!product) return null;
 
+  // Tabs
+  const tabs = [
+    { id: "product-details", label: t("product_detail.details") },
+    { id: "reviews", label: t("product_detail.reviews") },
+    { id: "faqs", label: t("product_detail.faqs") },
+  ];
+
+  // Product Specs
+  const productSpecs = [
+    { label: t("details_info.brand"), value: product.brand },
+    { label: t("details_info.category"), value: product.category },
+    {
+      label: t("details_info.stock"),
+      value: t("details_info.stock_value", { count: product.stock }),
+    },
+    { label: t("details_info.sku"), value: product.sku },
+    {
+      label: t("details_info.weight"),
+      value: t("details_info.weight_value", { amount: product.weight }),
+    },
+  ];
+
   return (
     <Container className="py-4 md:py-6">
       <hr className="border-t border-gray-200 mb-6" />
@@ -92,7 +116,7 @@ export default function ProductDetail() {
       <Breadcrumb
         items={[
           { label: "Home", href: "/" },
-          { label: "Shop", href: "/products" },
+          { label: "Products", href: "/products" },
           { label: product.category, href: `/products/${product.category}` },
           { label: product.title },
         ]}
@@ -133,7 +157,7 @@ export default function ProductDetail() {
 
         {/* Details */}
         <div className="flex flex-col gap-4 md:w-[40%]">
-          <h1 className="text-2xl md:text-4xl lg:text-[40px] font-bold text-black uppercase ">
+          <h1 className="font-display text-2xl md:text-4xl lg:text-[40px] text-black uppercase ">
             {product.title}
           </h1>
 
@@ -145,7 +169,7 @@ export default function ProductDetail() {
 
           {/* Price */}
           <div className="flex items-center gap-3">
-            <span className="text-2xl md:text-3xl font-black text-black">
+            <span className="text-2xl md:text-3xl font-bold text-black">
               ${discountedPrice ?? product.price}
             </span>
             {discountedPrice && (
@@ -169,7 +193,7 @@ export default function ProductDetail() {
 
           {/* Size */}
           <div>
-            <p className="text-sm text-gray-500 mb-3">Choose Size</p>
+            <p className="text-sm text-gray-500 mb-3">{t("products.size")}</p>
             <div className="flex flex-wrap gap-2">
               {sizes.map((size) => (
                 <button
@@ -212,7 +236,7 @@ export default function ProductDetail() {
               className="bg-black text-white hover:bg-gray-900"
               onClick={handleAddToCart}
             >
-              Add to Cart
+              {t("product_detail.add_to_cart")}
             </UIButton>
           </div>
         </div>
@@ -221,18 +245,14 @@ export default function ProductDetail() {
       {/* Tabs */}
       <div className="mt-14 md:mt-20">
         <Tabs defaultValue="reviews">
-          <TabsList className="w-full border-b border-gray-200 bg-transparent rounded-none gap-8 justify-start h-auto pb-0">
-            {["Product Details", "Rating & Reviews", "FAQs"].map((tab) => (
+          <TabsList className="w-full border-b border-gray-200 bg-transparent rounded-none h-auto ">
+            {tabs.map((tab) => (
               <TabsTrigger
-                key={tab}
-                value={
-                  tab === "Rating & Reviews"
-                    ? "reviews"
-                    : tab.toLowerCase().replace(" ", "-")
-                }
+                key={tab.id}
+                value={tab.id}
                 className="pb-4 text-sm md:text-base text-gray-400 data-[state=active]:text-black data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none bg-transparent shadow-none"
               >
-                {tab}
+                {tab.label}
               </TabsTrigger>
             ))}
           </TabsList>
@@ -240,13 +260,7 @@ export default function ProductDetail() {
           {/* Product Details Tab */}
           <TabsContent value="product-details" className="mt-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                { label: "Brand", value: product.brand },
-                { label: "Category", value: product.category },
-                { label: "Stock", value: `${product.stock} items` },
-                { label: "SKU", value: product.sku },
-                { label: "Weight", value: `${product.weight}g` },
-              ].map(({ label, value }) => (
+              {productSpecs.map(({ label, value }) => (
                 <div
                   key={label}
                   className="flex items-center justify-between bg-gray-50 rounded-2xl px-5 py-4"
@@ -264,13 +278,13 @@ export default function ProductDetail() {
           <TabsContent value="reviews" className="mt-6">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-xl font-bold text-black">
-                All Reviews{" "}
+                {t("product_detail.reviews_title")}{" "}
                 <span className="text-gray-400 font-normal text-base">
                   ({product.reviews?.length})
                 </span>
               </h3>
               <Button className="rounded-full bg-black text-white hover:bg-gray-900 text-sm px-6">
-                Write a Review
+                {t("product_detail.write_review")}
               </Button>
             </div>
 
@@ -295,7 +309,9 @@ export default function ProductDetail() {
 
           {/* FAQs Tab */}
           <TabsContent value="faqs" className="mt-6">
-            <p className="text-sm text-gray-500">No FAQs available.</p>
+            <p className="text-sm text-gray-500">
+              {t("product_detail.no_faq")}
+            </p>
           </TabsContent>
         </Tabs>
       </div>

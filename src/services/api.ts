@@ -24,6 +24,12 @@ api.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
+api.interceptors.request.use((config) => {
+  const lang = localStorage.getItem("lang") || "en";
+  config.headers["Accept-Language"] = lang;
+  return config;
+});
+
 // Error handler
 api.interceptors.response.use(
   (response) => response,

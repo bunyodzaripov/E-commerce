@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { UIButton } from "@/components";
 import { useGetCategories } from "@/hooks";
 import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 // ---- Types ----
 interface FilterState {
@@ -44,8 +45,6 @@ const sizes = [
   "4X-Large",
 ];
 
-const dressStyles = ["Casual", "Formal", "Party", "Gym"];
-
 // ---- Section wrapper ----
 function FilterSection({
   title,
@@ -81,6 +80,16 @@ export default function FilterSidebar({
   const toggle = <T,>(arr: T[], val: T): T[] =>
     arr.includes(val) ? arr.filter((v) => v !== val) : [...arr, val];
 
+  const { lang } = useParams<{ lang: string }>();
+  const { t } = useTranslation();
+
+  const dressStyles = [
+    { label: t("styles.casual") },
+    { label: t("styles.formal") },
+    { label: t("styles.party") },
+    { label: t("styles.gym") },
+  ];
+
   // Filter categories
   const { data: categories } = useGetCategories();
   const { category: activeCategory } = useParams<{ category: string }>();
@@ -90,17 +99,19 @@ export default function FilterSidebar({
     <div className="w-full border border-gray-200 rounded-2xl py-5 px-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <span className="text-[20px] font-normal text-black">Filters</span>
+        <span className="text-[20px] font-normal text-black">
+          {t("products.filters")}
+        </span>
         <Sliders className="w-6 h-6 text-gray-500" />
       </div>
 
       {/* Categories */}
-      <FilterSection title="Categories">
+      <FilterSection title={t("products.categories")}>
         <div className="py-4 flex flex-col gap-3">
           {categories?.map((cat: { slug: string; name: string }) => (
             <button
               key={cat.slug}
-              onClick={() => navigate(`/products/${cat.slug}`)}
+              onClick={() => navigate(`/${lang ?? "en"}/products/${cat.slug}`)}
               className={`flex items-center justify-between text-sm transition-colors ${
                 activeCategory === cat.slug
                   ? "text-black font-semibold"
@@ -115,7 +126,7 @@ export default function FilterSidebar({
       </FilterSection>
 
       {/* Price */}
-      <FilterSection title="Price">
+      <FilterSection title={t("products.price")}>
         <Slider
           min={0}
           max={500}
@@ -133,7 +144,7 @@ export default function FilterSidebar({
       </FilterSection>
 
       {/* Colors */}
-      <FilterSection title="Colors">
+      <FilterSection title={t("products.colors")}>
         <div className="flex flex-wrap gap-4">
           {colors.map((color) => (
             <button
@@ -156,7 +167,7 @@ export default function FilterSidebar({
       </FilterSection>
 
       {/* Sizes */}
-      <FilterSection title="Size">
+      <FilterSection title={t("products.size")}>
         <div className="flex flex-wrap gap-2">
           {sizes.map((size) => (
             <button
@@ -178,14 +189,14 @@ export default function FilterSidebar({
       </FilterSection>
 
       {/* Dress Style */}
-      <FilterSection title="Dress Style">
+      <FilterSection title={t("products.dress_style")}>
         <div className="flex flex-col gap-5">
-          {dressStyles.map((style) => (
+          {dressStyles.map((style, i) => (
             <button
-              key={style}
+              key={i}
               className="flex items-center justify-between text-base font-normal text-gray-500 hover:text-black transition-colors"
             >
-              {style}
+              {style.label}
               <ChevronDown className="w-4 h-4 -rotate-90" />
             </button>
           ))}
@@ -194,7 +205,7 @@ export default function FilterSidebar({
 
       {/* Apply */}
       <UIButton className="w-full bg-black text-white hover:bg-gray-800 hover:text-white my-6">
-        Apply Filter
+        {t("products.apply")}
       </UIButton>
     </div>
   );
