@@ -146,5 +146,17 @@
     "ordered": "Order placed successfully!",
     "error": "Something went wrong!",
     "added": "Product added to cart!"
+  },
+
+  "auth": {
+    "login_title": "Welcome Back",
+    "login_subtitle": "Sign in to your account to continue",
+    "username_label": "Username",
+    "username_placeholder": "Enter your username",
+    "password_label": "Password",
+    "password_placeholder": "Enter your password",
+    "login_button": "Sign In",
+    "logging_in": "Signing in...",
+    "demo_title": "Demo credentials"
   }
 }

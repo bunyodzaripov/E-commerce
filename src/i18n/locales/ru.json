@@ -146,5 +146,17 @@
     "ordered": "Заказ успешно оформлен!",
     "error": "Что-то пошло не так!",
     "added": "Товар добавлен в корзину!"
+  },
+
+  "auth": {
+    "login_title": "С возвращением",
+    "login_subtitle": "Войдите в свой аккаунт, чтобы продолжить",
+    "username_label": "Имя пользователя",
+    "username_placeholder": "Введите имя пользователя",
+    "password_label": "Пароль",
+    "password_placeholder": "Введите ваш пароль",
+    "login_button": "Войти",
+    "logging_in": "Вход...",
+    "demo_title": "Демо данные"
   }
 }

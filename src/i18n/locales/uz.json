@@ -146,5 +146,17 @@
     "ordered": "Buyurtmangiz muvaffaqiyatli qabul qilindi!",
     "error": "Xatolik yuz berdi!",
     "added": "Mahsulot savatchaga qo'shildi!"
+  },
+
+  "auth": {
+    "login_title": "Xush kelibsiz",
+    "login_subtitle": "Davom etish uchun hisobingizga kiring",
+    "username_label": "Foydalanuvchi nomi",
+    "username_placeholder": "Foydalanuvchi nomini kiriting",
+    "password_label": "Parol",
+    "password_placeholder": "Parolingizni kiriting",
+    "login_button": "Kirish",
+    "logging_in": "Kirilmoqda...",
+    "demo_title": "Demo ma'lumotlar"
   }
 }

@@ -9,13 +9,13 @@ import { useTranslation } from "react-i18next";
 
 export default function LoginPage() {
   const { mutate, isPending } = useLogin();
-
   const { t } = useTranslation();
 
   const [form, setForm] = useState({ username: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // name atributi tarjima qilinmasligi kerak, aks holda state yangilanmaydi
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -24,17 +24,20 @@ export default function LoginPage() {
       toast.info(t("toast.info"));
       return;
     }
-    try {
-      mutate(form);
-    } catch {
-      console.log("error");
-    }
+    mutate(form);
   };
+
+  const stats = [
+    { value: "200+", label: t("hero.stats.brands") },
+    { value: "2,000+", label: t("hero.stats.products") },
+    { value: "30,000+", label: t("hero.stats.customers") },
+  ];
 
   return (
     <div className="min-h-screen flex">
+      {/* Left Side: Banner (Hidden on mobile) */}
       <div className="hidden md:flex w-1/2 bg-black flex-col justify-between p-12">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2 w-fit">
           <ShoppingBag className="w-6 h-6 text-white" />
           <span className="text-white text-2xl font-bold uppercase tracking-tight">
             Shop.co
@@ -42,25 +45,16 @@ export default function LoginPage() {
         </Link>
 
         <div className="flex flex-col gap-6">
-          <h1 className="font-display text-5xl font-bold text-white uppercase leading-tight">
-            Find Clothes
-            <br />
-            That Match
-            <br />
-            Your Style
+          <h1 className="font-display text-5xl font-bold text-white uppercase leading-tight [text-wrap:balance]">
+            {t("hero.title")}
           </h1>
-          <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-            Browse through our diverse range of meticulously crafted garments,
-            designed to bring out your individuality.
+          <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+            {t("hero.description")}
           </p>
         </div>
 
         <div className="flex gap-8">
-          {[
-            { value: "200+", label: "Brands" },
-            { value: "2,000+", label: "Products" },
-            { value: "30,000+", label: "Customers" },
-          ].map((stat) => (
+          {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col">
               <span className="text-white text-2xl font-bold">
                 {stat.value}
@@ -71,9 +65,10 @@ export default function LoginPage() {
         </div>
       </div>
 
+      {/* Right Side: Login Form */}
       <div className="flex-1 flex items-center justify-center px-6 md:px-16 bg-white">
         <div className="w-full max-w-md flex flex-col gap-8">
-          <Link to="/" className="flex md:hidden items-center gap-2">
+          <Link to="/" className="flex md:hidden items-center gap-2 mb-4">
             <ShoppingBag className="w-5 h-5 text-black" />
             <span className="text-black text-xl font-bold uppercase">
               Shop.co
@@ -82,21 +77,20 @@ export default function LoginPage() {
 
           <div className="flex flex-col gap-2">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-black uppercase">
-              Welcome Back
+              {t("auth.login_title")}
             </h2>
-            <p className="text-sm text-gray-400">
-              Sign in to your account to continue
-            </p>
+            <p className="text-sm text-gray-400">{t("auth.login_subtitle")}</p>
           </div>
 
-          {/* Form */}
           <div className="flex flex-col gap-4">
             {/* Username */}
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-black">Username</label>
+              <label className="text-sm font-medium text-black">
+                {t("auth.username_label")}
+              </label>
               <Input
-                name="username"
-                placeholder="Enter your username"
+                name="username" // Name statik qolishi shart
+                placeholder={t("auth.username_placeholder")}
                 value={form.username}
                 onChange={handleChange}
                 className="h-12 rounded-xl border-gray-200 bg-gray-50 focus:bg-white transition-all"
@@ -105,12 +99,14 @@ export default function LoginPage() {
 
             {/* Password */}
             <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-black">Password</label>
+              <label className="text-sm font-medium text-black">
+                {t("auth.password_label")}
+              </label>
               <div className="relative">
                 <Input
-                  name="password"
+                  name="password" // Name statik qolishi shart
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder={t("auth.password_placeholder")}
                   value={form.password}
                   onChange={handleChange}
                   onKeyDown={(e) => e.key === "Enter" && handleLogin()}
@@ -134,22 +130,23 @@ export default function LoginPage() {
             <Button
               onClick={handleLogin}
               disabled={isPending}
-              className="w-full h-12 rounded-full bg-black text-white hover:bg-gray-900 font-semibold text-base mt-2 transition-all duration-300"
+              className="w-full h-12 cursor-pointer rounded-full bg-black text-white hover:bg-gray-900 font-semibold text-base mt-2 transition-all duration-300"
             >
-              {isPending ? "Signing in..." : "Sign In"}
+              {isPending ? t("auth.logging_in") : t("auth.login_button")}
             </Button>
           </div>
 
           {/* Demo credentials */}
           <div className="bg-gray-50 rounded-2xl p-4 flex flex-col gap-1">
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
-              Demo credentials
+              {t("auth.demo_title")}
             </p>
             <p className="text-sm text-gray-600">
-              Username: <span className="font-semibold text-black">emilys</span>
+              {t("auth.username_label")}:{" "}
+              <span className="font-semibold text-black">emilys</span>
             </p>
             <p className="text-sm text-gray-600">
-              Password:{" "}
+              {t("auth.password_label")}:{" "}
               <span className="font-semibold text-black">emilyspass</span>
             </p>
           </div>
