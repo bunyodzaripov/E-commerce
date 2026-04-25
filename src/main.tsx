@@ -8,6 +8,11 @@ import { Toaster } from "sonner";
 import { ErrorBoundary } from "./components";
 import "@/i18n";
 
+const theme = JSON.parse(
+  localStorage.getItem("theme") || '{"state":{"theme":"light"}}',
+);
+document.documentElement.classList.toggle("dark", theme.state.theme === "dark");
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

@@ -54,7 +54,7 @@ export default function ProductsGrid() {
 
   return (
     <Container className="py-2 md:py-6">
-      <hr className="border-t border-gray-200 mb-6" />
+      <hr className="border-t border-gray-200 dark:border-gray-800 mb-6" />
 
       {/* Breadcrumb */}
       <Breadcrumb
@@ -71,7 +71,7 @@ export default function ProductsGrid() {
         <div className="w-full md:w-[70%]">
           {/* Top bar */}
           <div className="flex items-center justify-between mb-6">
-            <h1 className="font-display text-[20px] md:text-[28px] lg:text-[32px] font-bold text-black">
+            <h1 className="font-display text-[20px] md:text-[28px] lg:text-[32px] font-bold text-foreground uppercase">
               {categoryName}
             </h1>
 

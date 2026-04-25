@@ -110,7 +110,7 @@ export default function ProductDetail() {
 
   return (
     <Container className="py-4 md:py-6">
-      <hr className="border-t border-gray-200 mb-6" />
+      <hr className="border-t border-gray-200 dark:border-gray-800 mb-6" />
 
       {/* Breadcrumb */}
       <Breadcrumb
@@ -132,8 +132,10 @@ export default function ProductDetail() {
               <button
                 key={i}
                 onClick={() => setSelectedImage(i)}
-                className={`shrink-0 w-27.5 h-26.5 md:w-38 md:h-42 rounded-[20px] bg-[#F0EEED] overflow-hidden border transition-all ${
-                  selectedImage === i ? "border-black" : "border-transparent"
+                className={`shrink-0 w-27.5 h-26.5 md:w-38 md:h-42 rounded-[20px] bg-[#F0EEED] dark:bg-[#1E1E1E] overflow-hidden border transition-all ${
+                  selectedImage === i
+                    ? "border-foreground"
+                    : "border-transparent"
                 }`}
               >
                 <img
@@ -146,7 +148,7 @@ export default function ProductDetail() {
           </div>
 
           {/* Main Image */}
-          <div className="flex-1 bg-[#F0EEED] rounded-[20px] overflow-hidden aspect-square">
+          <div className="flex-1 bg-[#F0EEED] dark:bg-[#1E1E1E] rounded-[20px] overflow-hidden aspect-square">
             <img
               src={product.images?.[selectedImage]}
               alt={product.title}
@@ -157,27 +159,29 @@ export default function ProductDetail() {
 
         {/* Details */}
         <div className="flex flex-col gap-4 md:w-[40%]">
-          <h1 className="font-display text-2xl md:text-4xl lg:text-[40px] text-black uppercase ">
+          <h1 className="font-display text-2xl md:text-4xl lg:text-[40px] text-foreground uppercase ">
             {product.title}
           </h1>
 
           {/* Rating */}
           <div className="flex items-center gap-2">
             <RatingStars rating={product.rating} />
-            <span className="text-sm text-gray-500">{product.rating}/5</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              {product.rating}/5
+            </span>
           </div>
 
           {/* Price */}
           <div className="flex items-center gap-3">
-            <span className="text-2xl md:text-3xl font-bold text-black">
+            <span className="text-2xl md:text-3xl font-bold text-foreground">
               ${discountedPrice ?? product.price}
             </span>
             {discountedPrice && (
               <>
-                <span className="text-2xl md:text-3xl text-gray-400 line-through">
+                <span className="text-2xl md:text-3xl text-gray-400 dark:text-gray-600 line-through">
                   ${product.price}
                 </span>
-                <Badge className="bg-red-100 text-red-500 rounded-full h-full w-auto">
+                <Badge className="bg-red-100 dark:bg-red-900 text-red-500 dark:text-red-300 rounded-full h-full w-auto">
                   -{Math.round(product.discountPercentage)}%
                 </Badge>
               </>
@@ -185,15 +189,17 @@ export default function ProductDetail() {
           </div>
 
           {/* Description */}
-          <p className="text-sm md:text-base text-gray-500 leading-relaxed">
+          <p className="text-sm md:text-base text-gray-500 dark:text-gray-400 leading-relaxed">
             {product.description}
           </p>
 
-          <hr className="border-gray-200" />
+          <hr className="border-gray-200 dark:border-gray-800" />
 
           {/* Size */}
           <div>
-            <p className="text-sm text-gray-500 mb-3">{t("products.size")}</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+              {t("products.size")}
+            </p>
             <div className="flex flex-wrap gap-2">
               {sizes.map((size) => (
                 <button
@@ -201,8 +207,8 @@ export default function ProductDetail() {
                   onClick={() => setSelectedSize(size)}
                   className={`px-5 py-2 rounded-full text-sm font-medium border transition-all ${
                     selectedSize === size
-                      ? "bg-black text-white border-black"
-                      : "bg-gray-100 text-gray-600 border-transparent hover:border-gray-300"
+                      ? "bg-foreground text-background border-foreground"
+                      : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-transparent hover:border-gray-300 dark:hover:border-gray-700"
                   }`}
                 >
                   {size}
@@ -211,14 +217,14 @@ export default function ProductDetail() {
             </div>
           </div>
 
-          <hr className="border-gray-200" />
+          <hr className="border-gray-200 dark:border-gray-800" />
 
           {/* Quantity + Add to Cart */}
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-4 bg-gray-100 rounded-full px-5 py-1 md:py-3">
+            <div className="flex items-center gap-4 bg-gray-100 dark:bg-gray-800 rounded-full px-5 py-1 md:py-3">
               <button
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="text-black"
+                className="text-foreground"
               >
                 <Minus className="w-4 h-4" />
               </button>
@@ -227,13 +233,13 @@ export default function ProductDetail() {
               </span>
               <button
                 onClick={() => setQuantity(quantity + 1)}
-                className="text-black"
+                className="text-foreground"
               >
                 <Plus className="w-4 h-4" />
               </button>
             </div>
             <UIButton
-              className="bg-black text-white hover:bg-gray-900"
+              className="bg-foreground text-background hover:bg-gray-900 dark:hover:bg-gray-200"
               onClick={handleAddToCart}
             >
               {t("product_detail.add_to_cart")}
@@ -245,12 +251,12 @@ export default function ProductDetail() {
       {/* Tabs */}
       <div className="mt-14 md:mt-20">
         <Tabs defaultValue="reviews">
-          <TabsList className="w-full border-b border-gray-200 bg-transparent rounded-none h-auto ">
+          <TabsList className="w-full border-b border-gray-200 dark:border-gray-800 bg-transparent rounded-none h-auto">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="pb-4 text-sm md:text-base text-gray-400 data-[state=active]:text-black data-[state=active]:border-b-2 data-[state=active]:border-black rounded-none bg-transparent shadow-none"
+                className="py-4 text-sm md:text-base text-gray-400 dark:text-gray-300 rounded-full"
               >
                 {tab.label}
               </TabsTrigger>
@@ -263,10 +269,12 @@ export default function ProductDetail() {
               {productSpecs.map(({ label, value }) => (
                 <div
                   key={label}
-                  className="flex items-center justify-between bg-gray-50 rounded-2xl px-5 py-4"
+                  className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-2xl px-5 py-4"
                 >
-                  <span className="text-sm text-gray-400">{label}</span>
-                  <span className="text-sm font-semibold text-black">
+                  <span className="text-sm text-gray-400 dark:text-gray-500">
+                    {label}
+                  </span>
+                  <span className="text-sm font-semibold text-foreground">
                     {value}
                   </span>
                 </div>
@@ -277,13 +285,13 @@ export default function ProductDetail() {
           {/* Reviews Tab */}
           <TabsContent value="reviews" className="mt-6">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-black">
+              <h3 className="text-xl font-bold text-foreground">
                 {t("product_detail.reviews_title")}{" "}
-                <span className="text-gray-400 font-normal text-base">
+                <span className="text-gray-400 dark:text-gray-500 font-normal text-base">
                   ({product.reviews?.length})
                 </span>
               </h3>
-              <Button className="rounded-full bg-black text-white hover:bg-gray-900 text-sm px-6">
+              <Button className="rounded-full bg-foreground text-background hover:bg-gray-900 dark:hover:bg-gray-200 text-sm px-6">
                 {t("product_detail.write_review")}
               </Button>
             </div>
@@ -309,7 +317,7 @@ export default function ProductDetail() {
 
           {/* FAQs Tab */}
           <TabsContent value="faqs" className="mt-6">
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 dark:text-gray-400">
               {t("product_detail.no_faq")}
             </p>
           </TabsContent>

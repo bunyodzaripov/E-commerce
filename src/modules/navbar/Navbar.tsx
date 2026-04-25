@@ -9,6 +9,7 @@ import { useCartStore } from "@/store/cartStore";
 import UserMenu from "./UserIcon";
 import LangSwitcher from "./LangSwitcher";
 import { useTranslation } from "react-i18next";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { lang } = useParams<{ lang: string }>();
@@ -25,14 +26,17 @@ const Navbar = () => {
   const totalCount = items.reduce((acc, i) => acc + i.quantity, 0);
 
   return (
-    <header className="sticky w-full top-0 left-0 z-50 bg-white">
+    <header className="sticky w-full top-0 left-0 z-50 bg-background">
       <NavBanner />
       {/* Container */}
       <Container className="h-16 flex items-center justify-between gap-4">
         {/* Mobile Navigation */}
         <Sheet>
-          <SheetTrigger aria-label="Open menu" className="md:hidden p-1">
-            <Menu size={22} className="text-black" />
+          <SheetTrigger
+            aria-label="Open menu"
+            className="md:hidden p-1 cursor-pointer"
+          >
+            <Menu size={22} className="text-foreground" />
           </SheetTrigger>
           <SheetContent side="left" className="w-72 p-0">
             {/* Mobile Header */}
@@ -43,8 +47,8 @@ const Navbar = () => {
             </div>
 
             {/* Mobile Search */}
-            <div className="px-4 py-3 border-b border-gray-100">
-              <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 gap-2">
+            <div className="px-4 py-3 border-b border-gray-100 dark:border-gray-800">
+              <div className="flex items-center bg-muted rounded-full px-4 py-2 gap-2">
                 <SearchBar />
               </div>
             </div>
@@ -55,7 +59,7 @@ const Navbar = () => {
                 <Link
                   key={link.label}
                   to={`/${lang ?? "en"}/${link.path}`}
-                  className="text-black font-medium text-base py-3 border-b border-gray-100 hover:opacity-70 transition-opacity"
+                  className="text-foreground font-medium text-base py-3 border-b border-gray-100 dark:border-gray-800 hover:opacity-70 transition-opacity"
                 >
                   {t(link.label)}
                 </Link>
@@ -65,13 +69,13 @@ const Navbar = () => {
         </Sheet>
 
         <Link to={`/${lang ?? "en"}`} className="max-w-40">
-          <img src={Logo} alt="logo" className="w-full h-auto" />
+          <img src={Logo} alt="logo" className="w-full h-auto dark:invert" />
         </Link>
 
         <NavLinks />
 
         <div className="hidden md:flex flex-1 max-w-md">
-          <div className="flex items-center w-full bg-gray-100 rounded-full px-4 py-2 gap-2">
+          <div className="flex items-center w-full bg-muted rounded-full px-4 py-2 gap-2">
             <SearchBar />
           </div>
         </div>
@@ -80,16 +84,17 @@ const Navbar = () => {
         <div className="flex gap-4">
           <Link
             to={`/${lang ?? "en"}/cart`}
-            className="flex items-center relative gap-2 text-black font-medium"
+            className="flex items-center relative gap-2 text-foreground font-medium"
           >
             <ShoppingCart size={24} />
             {totalCount > 0 && (
-              <span className="absolute -top-2 -right-2 w-5 h-5 bg-black text-white text-xs rounded-full flex items-center justify-center">
+              <span className="absolute -top-2 -right-2 w-5 h-5 bg-foreground text-background text-xs rounded-full flex items-center justify-center">
                 {totalCount}
               </span>
             )}
           </Link>
           <UserMenu />
+          <ThemeToggle />
           <LangSwitcher />
         </div>
       </Container>

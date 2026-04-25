@@ -13,7 +13,7 @@ export default function CarouselControls() {
         variant="ghost"
         onClick={scrollPrev}
         disabled={!canScrollPrev}
-        className="rounded-full hover:bg-gray-100 w-6! h-6!"
+        className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 w-6! h-6!"
       >
         <ArrowLeft className="w-6! h-6!" />
       </Button>
@@ -22,7 +22,7 @@ export default function CarouselControls() {
         variant="ghost"
         onClick={scrollNext}
         disabled={!canScrollNext}
-        className="rounded-full hover:bg-gray-100 w-6! h-6!"
+        className="rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 w-6! h-6!"
       >
         <ArrowRight className="w-6! h-6!" />
       </Button>

@@ -22,7 +22,7 @@ const NavLinks = () => {
   return (
     <nav className="hidden md:flex items-center gap-6">
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex items-center gap-1 text-black font-medium hover:opacity-70 transition-opacity outline-none">
+        <DropdownMenuTrigger className="flex items-center cursor-pointer gap-1 text-foreground font-medium hover:text-gray-600 dark:hover:text-gray-400 outline-none">
           {t("nav.shop")} <ChevronDown size={16} />
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-48 rounded-xl">
@@ -41,21 +41,21 @@ const NavLinks = () => {
 
       <a
         href="#top-selling"
-        className="text-black font-medium hover:text-gray-500 transition-opacity"
+        className="text-foreground font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-opacity"
       >
         {t("nav.on_sale")}
       </a>
 
       <a
         href="#new-arrivals"
-        className="text-black font-medium hover:text-gray-500 transition-opacity"
+        className="text-foreground font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-opacity"
       >
         {t("nav.new_arrivals")}
       </a>
 
       <Link
         to={`/${lang ?? "en"}/products`}
-        className="text-black font-medium hover:text-gray-500 transition-opacity"
+        className="text-foreground font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-opacity"
       >
         {t("nav.products")}
       </Link>

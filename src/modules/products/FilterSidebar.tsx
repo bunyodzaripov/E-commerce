@@ -55,10 +55,10 @@ function FilterSection({
 }) {
   const [open, setOpen] = useState(true);
   return (
-    <div className="border-t border-gray-200 py-4">
+    <div className="border-t border-gray-200 dark:border-gray-800 py-4">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center justify-between w-full text-[20px] font-bold text-black"
+        className="flex items-center justify-between w-full text-[20px] font-bold text-foreground"
       >
         {title}
         {open ? (
@@ -96,13 +96,13 @@ export default function FilterSidebar({
   const navigate = useNavigate();
 
   return (
-    <div className="w-full border border-gray-200 rounded-2xl py-5 px-6">
+    <div className="w-full border border-gray-200 dark:border-gray-800 rounded-2xl py-5 px-6">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
-        <span className="text-[20px] font-normal text-black">
+        <span className="text-[20px] font-normal text-foreground">
           {t("products.filters")}
         </span>
-        <Sliders className="w-6 h-6 text-gray-500" />
+        <Sliders className="w-6 h-6 text-gray-500 dark:text-gray-400" />
       </div>
 
       {/* Categories */}
@@ -114,8 +114,8 @@ export default function FilterSidebar({
               onClick={() => navigate(`/${lang ?? "en"}/products/${cat.slug}`)}
               className={`flex items-center justify-between text-sm transition-colors ${
                 activeCategory === cat.slug
-                  ? "text-black font-semibold"
-                  : "text-gray-500 hover:text-black"
+                  ? "text-foreground font-semibold"
+                  : "text-gray-500 dark:text-gray-400 hover:text-foreground"
               }`}
             >
               {cat.name}
@@ -137,7 +137,7 @@ export default function FilterSidebar({
           }
           className="mt-2"
         />
-        <div className="flex justify-between text-sm font-medium text-black mt-2">
+        <div className="flex justify-between text-sm font-medium text-foreground mt-2">
           <span>${filters.priceRange[0]}</span>
           <span>${filters.priceRange[1]}</span>
         </div>
@@ -159,7 +159,7 @@ export default function FilterSidebar({
                 "w-9 h-9 rounded-full transition-all",
                 color.bg,
                 filters.colors.includes(color.value) &&
-                  "ring-2 ring-offset-2 ring-black",
+                  "ring-2 ring-offset-2 ring-foreground",
               )}
             />
           ))}
@@ -178,8 +178,8 @@ export default function FilterSidebar({
               className={cn(
                 "px-5 py-2.5 rounded-full text-sm border transition-all",
                 filters.sizes.includes(size)
-                  ? "bg-black text-white border-black"
-                  : "bg-gray-100 text-gray-600 border-transparent hover:border-gray-300",
+                  ? "bg-foreground text-background border-foreground"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-transparent hover:border-gray-300 dark:hover:border-gray-700",
               )}
             >
               {size}
@@ -194,7 +194,7 @@ export default function FilterSidebar({
           {dressStyles.map((style, i) => (
             <button
               key={i}
-              className="flex items-center justify-between text-base font-normal text-gray-500 hover:text-black transition-colors"
+              className="flex items-center justify-between text-base font-normal text-gray-500 dark:text-gray-400  hover:text-foreground transition-colors"
             >
               {style.label}
               <ChevronDown className="w-4 h-4 -rotate-90" />
@@ -204,7 +204,7 @@ export default function FilterSidebar({
       </FilterSection>
 
       {/* Apply */}
-      <UIButton className="w-full bg-black text-white hover:bg-gray-800 hover:text-white my-6">
+      <UIButton className="w-full bg-foreground text-background hover:bg-gray-800 dark:hover:bg-gray-200 hover:text-background my-6">
         {t("products.apply")}
       </UIButton>
     </div>

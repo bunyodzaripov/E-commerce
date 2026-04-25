@@ -14,7 +14,7 @@ export default function ProductCard({ product }: { product: Product }) {
     <Link to={`/${lang ?? "en"}/product/${product.id}`}>
       <div className="flex flex-col gap-3 cursor-pointer group">
         {/* Image */}
-        <div className="bg-[#F0EEED] rounded-2xl overflow-hidden flex items-center justify-center p-4">
+        <div className="bg-[#F0EEED] dark:bg-[#1E1E1E] rounded-2xl overflow-hidden flex items-center justify-center p-4">
           <img
             src={product.images[0]}
             alt={product.title}
@@ -23,7 +23,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
 
         {/* Title */}
-        <p className="font-bold text-black text-sm md:text-base leading-snug">
+        <p className="font-bold text-foreground text-sm md:text-base leading-snug">
           {product.title}
         </p>
 
@@ -32,16 +32,16 @@ export default function ProductCard({ product }: { product: Product }) {
 
         {/* Price */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-lg md:text-xl font-bold text-black">
+          <span className="text-lg md:text-xl font-bold text-foreground">
             ${discountedPrice ?? product.price}
           </span>
           {discountedPrice && (
-            <span className="text-sm md:text-base text-gray-400 line-through">
+            <span className="text-sm md:text-base text-gray-600 dark:text-gray-400 line-through">
               ${product.price}
             </span>
           )}
           {product.discountPercentage && (
-            <Badge className="bg-red-100 text-red-500 text-xs font-semibold rounded-full px-2 py-0.5 hover:bg-red-100">
+            <Badge className="bg-red-100 dark:bg-red-900 text-red-500 dark:text-red-300 text-xs font-semibold rounded-full px-2 py-0.5 hover:bg-red-100">
               -{product.discountPercentage}%
             </Badge>
           )}
@@ -60,13 +60,18 @@ function RatingStars({ rating }: { rating: number }) {
     <div className="flex items-center gap-1">
       <div className="flex items-center">
         {Array.from({ length: fullStars }).map((_, i) => (
-          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+          <Star
+            key={i}
+            className="w-4 h-4 fill-yellow-400 text-yellow-400 dark:fill-white dark:text-white"
+          />
         ))}
         {hasHalf && (
-          <StarHalf className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+          <StarHalf className="w-4 h-4 fill-yellow-400 text-yellow-400 dark:fill-white dark:text-white" />
         )}
       </div>
-      <span className="text-xs md:text-sm text-gray-500">{rating}/5</span>
+      <span className="text-xs md:text-sm text-gray-600 dark:text-gray-400">
+        {rating}/5
+      </span>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export default function UserMenu() {
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger
         aria-label="Open user menu"
-        className="flex items-center cursor-pointer text-black hover:opacity-70 transition-opacity outline-none"
+        className="flex items-center cursor-pointer text-foreground hover:opacity-70 transition-opacity outline-none"
       >
         {user?.image ? (
           <img
@@ -54,7 +54,7 @@ export default function UserMenu() {
                 className="w-10 h-10 rounded-full object-cover shrink-0"
               />
               <div className="flex flex-col min-w-0">
-                <span className="text-sm font-semibold text-black truncate">
+                <span className="text-sm font-semibold text-foreground truncate">
                   {user.firstName} {user.lastName}
                 </span>
                 <span className="text-xs text-gray-400 truncate">
@@ -68,7 +68,7 @@ export default function UserMenu() {
             {/* Logout */}
             <DropdownMenuItem
               onClick={handleLogout}
-              className="flex items-center gap-2 text-red-500 hover:text-red-600 hover:bg-red-50 rounded-xl cursor-pointer px-3 py-2.5"
+              className="flex items-center gap-2 text-red-500 hover:text-red-600 rounded-xl cursor-pointer px-3 py-2.5"
             >
               <LogOut className="w-4 h-4" />
               <span className="text-sm font-medium">{t("nav.logout")}</span>

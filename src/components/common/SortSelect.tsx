@@ -44,16 +44,16 @@ export default function SortSelect({
   );
 
   return (
-    <div className="hidden md:flex relative text-sm md:text-base text-gray-500">
+    <div className="hidden md:flex relative text-sm md:text-base text-gray-500 dark:text-gray-400">
       {t("sort.label")}
       <button
         onClick={() => setOpen(!open)}
-        className="font-semibold text-black flex items-center gap-1 ml-1"
+        className="font-semibold text-foreground flex items-center gap-1 ml-1"
       >
         {selected?.label ?? "Most Popular"} <ChevronDown className="w-4 h-4" />
       </button>
       {open && (
-        <div className="absolute top-8 right-0 bg-white border border-gray-200 rounded-xl shadow-md z-10 w-48">
+        <div className="absolute top-8 right-0 bg-background border border-gray-200 dark:border-gray-700 rounded-xl shadow-md z-10 w-48">
           {sortOptions.map((option) => (
             <button
               key={option.label}
@@ -61,7 +61,7 @@ export default function SortSelect({
                 onChange(option.sortBy, option.order as "asc" | "desc");
                 setOpen(false);
               }}
-              className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors"
+              className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
             >
               {option.label}
             </button>

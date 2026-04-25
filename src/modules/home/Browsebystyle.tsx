@@ -13,7 +13,7 @@ export default function BrowseByStyle() {
   ];
   return (
     <Container className="mt-13 md:mt-20">
-      <div className="bg-[#F0F0F0] rounded-[20px] lg:rounded-[40px] p-6 lg:p-16">
+      <div className="bg-[#F0F0F0] dark:bg-[#1E1E1E] rounded-[20px] lg:rounded-[40px] p-6 lg:p-16">
         <Title title={t("styles.title")} />
 
         {/* categories */}

@@ -33,7 +33,7 @@ export default function LangSwitcher() {
 
   return (
     <DropdownMenu modal={false}>
-      <DropdownMenuTrigger className="flex items-center gap-1.5 text-black hover:opacity-70 transition-opacity outline-none">
+      <DropdownMenuTrigger className="flex items-center cursor-pointer gap-1.5 text-foreground hover:text-gray-600 dark:hover:text-gray-400 outline-none">
         <Globe className="w-5 h-5" />
         <span className="text-sm font-medium uppercase">{currentLang}</span>
       </DropdownMenuTrigger>
@@ -50,7 +50,7 @@ export default function LangSwitcher() {
               <span className="text-sm font-medium">{language.label}</span>
             </div>
             {currentLang === language.code && (
-              <Check className="w-4 h-4 text-black" />
+              <Check className="w-4 h-4 text-foreground" />
             )}
           </DropdownMenuItem>
         ))}

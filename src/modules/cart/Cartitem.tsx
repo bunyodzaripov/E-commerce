@@ -14,9 +14,9 @@ export default function CartItem({ item }: { item: CartItem }) {
     toast.success(t("toast.removed"));
   };
   return (
-    <div className="flex items-center gap-4 py-5 border-b border-gray-100 last:border-none">
+    <div className="flex items-center gap-4 py-5 border-b border-gray-100 dark:border-gray-800 last:border-none">
       {/* Rasm */}
-      <div className="w-20 h-20 md:w-24 md:h-24 bg-gray-100 rounded-2xl overflow-hidden shrink-0">
+      <div className="w-20 h-20 md:w-24 md:h-24 bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden shrink-0">
         <img
           src={item.image}
           alt={item.title}
@@ -27,37 +27,41 @@ export default function CartItem({ item }: { item: CartItem }) {
       {/* Info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-bold text-black text-sm md:text-base leading-snug truncate">
+          <h3 className="font-bold text-foreground text-sm md:text-base leading-snug truncate">
             {item.title}
           </h3>
           <button
             onClick={handleRemove}
-            className="text-red-400 hover:text-red-600 transition-colors shrink-0"
+            className="text-red-400 dark:text-red-500 hover:text-red-600 dark:hover:text-red-700 transition-colors shrink-0"
           >
             <Trash2 className="w-4 h-4 md:w-5 md:h-5" />
           </button>
         </div>
 
         <div className="flex flex-col gap-0.5 mt-1">
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-400 dark:text-gray-500">
             {t("products.size")}:{" "}
-            <span className="text-gray-600">{item.size}</span>
+            <span className="text-gray-600 dark:text-gray-400">
+              {item.size}
+            </span>
           </p>
           {item.color && (
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-400 dark:text-gray-500">
               {t("products.colors")}:{" "}
-              <span className="text-gray-600">{item.color}</span>
+              <span className="text-gray-600 dark:text-gray-400">
+                {item.color}
+              </span>
             </p>
           )}
         </div>
 
         <div className="flex items-center justify-between mt-3">
-          <span className="text-base md:text-lg font-bold text-black">
+          <span className="text-base md:text-lg font-bold text-foreground">
             ${item.price}
           </span>
 
           {/* Quantity */}
-          <div className="flex items-center gap-3 bg-gray-100 rounded-full px-4 py-2">
+          <div className="flex items-center gap-3 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-2">
             <button
               onClick={() =>
                 updateQuantity(

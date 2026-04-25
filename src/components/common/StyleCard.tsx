@@ -13,7 +13,7 @@ export default function StyleCard({
 
   return (
     <Link to={`/${lang ?? "en"}/products/${slug.toLowerCase()}`}>
-      <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-white cursor-pointer group">
+      <div className="relative w-full h-full rounded-[20px] overflow-hidden bg-background cursor-pointer group">
         <span className="absolute top-4 left-8 z-10 text-[24px] md:text-[36px] font-bold text-black">
           {label}
         </span>

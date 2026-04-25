@@ -71,7 +71,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#F0F0F0] mt-50 md:mt-45">
+    <footer className="bg-[#F0F0F0] dark:bg-background mt-50 md:mt-45">
       <Container className="pt-25 pb-22">
         {/* Newsletter Section */}
         <div className="relative">
@@ -83,8 +83,12 @@ export default function Footer() {
         <div className="mt-20 md:mt-10 lg:mt-20 flex flex-col md:flex-row items-start justify-between gap-10 md:gap-20">
           {/* Brand Info */}
           <div className="flex w-full flex-col gap-4 md:max-w-62">
-            <img src={Logo} alt="logo" className="w-36 md:w-auto h-auto mb-2" />
-            <p className="text-sm text-black/60 leading-relaxed">
+            <img
+              src={Logo}
+              alt="logo"
+              className="w-36 md:w-auto h-auto mb-2 dark:invert"
+            />
+            <p className="text-sm text-black/60 dark:text-white/60 leading-relaxed">
               {t("footer.description")}
             </p>
             <div className="flex items-center gap-3 mt-2">
@@ -94,7 +98,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-gray-300 bg-white flex items-center justify-center hover:bg-black hover:text-white transition-all duration-300"
+                  className="w-8 h-8 rounded-full border border-gray-300 bg-background flex items-center justify-center hover:bg-foreground hover:text-background transition-all duration-300"
                 >
                   <Icon />
                 </a>
@@ -106,7 +110,7 @@ export default function Footer() {
           <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-8">
             {footerLinks.map((section) => (
               <div key={section.title} className="flex flex-col">
-                <h3 className="text-sm md:text-base font-bold text-black uppercase tracking-widest mb-4 md:mb-6">
+                <h3 className="text-sm md:text-base font-bold text-foreground uppercase tracking-widest mb-4 md:mb-6">
                   {section.title}
                 </h3>
                 <ul className="flex flex-col gap-3">
@@ -114,7 +118,7 @@ export default function Footer() {
                     <li key={idx}>
                       <a
                         href={link.path}
-                        className="text-sm md:text-base font-normal text-black/60 hover:text-black transition-colors"
+                        className="text-sm md:text-base font-normal text-black/60 dark:text-white/60 hover:text-foreground transition-colors"
                       >
                         {link.label}
                       </a>
@@ -126,11 +130,11 @@ export default function Footer() {
           </div>
         </div>
 
-        <hr className="mb-6 mt-12 border-black/10" />
+        <hr className="mb-6 mt-12 border-black/10 dark:border-white/10" />
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-black/60 text-center md:text-left">
+          <p className="text-sm text-black/60 dark:text-white/60 text-center md:text-left">
             {t("footer.rights")}
           </p>
 

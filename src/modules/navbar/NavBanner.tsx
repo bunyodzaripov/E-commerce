@@ -11,7 +11,7 @@ const NavBanner = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="bg-black text-white text-sm py-2.5 text-center relative">
+    <div className="bg-foreground text-background text-sm py-2.5 text-center relative">
       <p>
         <Trans
           i18nKey="nav.navbanner"

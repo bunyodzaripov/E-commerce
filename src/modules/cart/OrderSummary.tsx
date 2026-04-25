@@ -28,36 +28,44 @@ export default function OrderSummary({ subtotal }: { subtotal: number }) {
   };
 
   return (
-    <div className="border border-gray-200 rounded-2xl p-6 flex flex-col gap-5 h-fit">
-      <h2 className="font-display text-xl font-bold text-black">
+    <div className="border border-gray-200 dark:border-gray-800 rounded-2xl p-6 flex flex-col gap-5 h-fit">
+      <h2 className="font-display text-xl font-bold text-foreground">
         {t("cart.orderSummary")}
       </h2>
 
       <div className="flex flex-col gap-3">
         <div className="flex justify-between text-sm">
-          <span className="text-gray-500">{t("cart.subtotal")}</span>
-          <span className="font-semibold text-black">${subtotal}</span>
+          <span className="text-gray-500 dark:text-gray-400">
+            {t("cart.subtotal")}
+          </span>
+          <span className="font-semibold text-foreground">${subtotal}</span>
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-gray-500">{t("cart.discount")} (-20%)</span>
-          <span className="font-semibold text-red-500">-${discount}</span>
+          <span className="text-gray-500 dark:text-gray-400">
+            {t("cart.discount")} (-20%)
+          </span>
+          <span className="font-semibold text-red-500 dark:text-red-400">
+            -${discount}
+          </span>
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-gray-500">{t("cart.delivery")}</span>
-          <span className="font-semibold text-black">${delivery}</span>
+          <span className="text-gray-500 dark:text-gray-400">
+            {t("cart.delivery")}
+          </span>
+          <span className="font-semibold text-foreground">${delivery}</span>
         </div>
       </div>
 
-      <hr className="border-gray-200" />
+      <hr className="border-gray-200 dark:border-gray-800" />
 
       <div className="flex justify-between">
-        <span className="font-semibold text-black">{t("cart.total")}</span>
-        <span className="text-xl font-bold text-black">${total}</span>
+        <span className="font-semibold text-foreground">{t("cart.total")}</span>
+        <span className="text-xl font-bold text-foreground">${total}</span>
       </div>
 
       {/* Promo code */}
-      <div className="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-1">
-        <Tag className="w-4 h-4 text-gray-400 shrink-0" />
+      <div className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 rounded-full px-4 py-1">
+        <Tag className="w-4 h-4 text-gray-400 dark:text-gray-500 shrink-0" />
         <Input
           placeholder={t("cart.promo")}
           value={promo}
@@ -66,7 +74,7 @@ export default function OrderSummary({ subtotal }: { subtotal: number }) {
         />
         <Button
           size="sm"
-          className="rounded-full bg-black text-white hover:bg-gray-900 text-xs px-4 shrink-0"
+          className="rounded-full bg-foreground text-background hover:bg-gray-900 dark:hover:bg-gray-700 text-xs px-4 shrink-0"
         >
           {t("cart.apply")}
         </Button>
@@ -75,7 +83,7 @@ export default function OrderSummary({ subtotal }: { subtotal: number }) {
       {/* Checkout */}
       <Button
         onClick={handleCheckout}
-        className="w-full rounded-full bg-black text-white hover:bg-gray-900 h-12 gap-2 text-base"
+        className="w-full cursor-pointer rounded-full bg-foreground text-background hover:bg-gray-900 dark:hover:bg-gray-700 h-12 gap-2 text-base"
       >
         {t("cart.checkout")} <ArrowRight className="w-4 h-4" />
       </Button>

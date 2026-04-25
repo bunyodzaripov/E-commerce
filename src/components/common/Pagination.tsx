@@ -33,7 +33,7 @@ export default function Pagination({
       <div className="flex items-center gap-1">
         {getPages().map((page, i) =>
           page === "..." ? (
-            <span key={i} className="px-2 text-gray-400">
+            <span key={i} className="px-2 text-gray-400 dark:text-gray-500">
               ...
             </span>
           ) : (
@@ -42,8 +42,8 @@ export default function Pagination({
               onClick={() => onChange(page as number)}
               className={`w-8 h-8 rounded-lg text-sm font-medium transition-all ${
                 current === page
-                  ? "bg-gray-100 text-black"
-                  : "text-gray-500 hover:bg-gray-100"
+                  ? "bg-gray-100 dark:bg-gray-800 text-foreground"
+                  : "text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-gray-400"
               }`}
             >
               {page}
