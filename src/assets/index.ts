@@ -14,6 +14,9 @@ import Payment2 from "./images/payment-2.png";
 import Payment3 from "./images/payment-3.png";
 import Payment4 from "./images/payment-4.png";
 import Payment5 from "./images/payment-5.png";
+import Uz from "./images/uz.png";
+import Ru from "./images/ru.png";
+import En from "./images/en.png";
 
 export {
   Brand1,
@@ -32,4 +35,7 @@ export {
   Payment3,
   Payment4,
   Payment5,
+  Uz,
+  Ru,
+  En,
 };
