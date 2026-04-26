@@ -7,7 +7,11 @@ import { useSearchProducts } from "@/hooks";
 import type { Product } from "@/@types";
 import { useTranslation } from "react-i18next";
 
-export default function SearchBar() {
+export default function SearchBar({
+  setOpenModal,
+}: {
+  setOpenModal?: (open: boolean) => void;
+}) {
   const { lang } = useParams<{ lang: string }>();
   const { t } = useTranslation();
   const [search, setSearch] = useState("");
@@ -61,6 +65,7 @@ export default function SearchBar() {
                 to={`/${lang ?? "en"}/product/${product.id}`}
                 onClick={() => {
                   setOpen(false);
+                  setOpenModal?.(false);
                   setSearch("");
                 }}
                 className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors "

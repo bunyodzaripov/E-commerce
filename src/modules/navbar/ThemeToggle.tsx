@@ -9,11 +9,7 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       className="text-black dark:text-white hover:opacity-70 transition-opacity cursor-pointer"
     >
-      {theme === "light" ? (
-        <Moon className="w-5 h-5" />
-      ) : (
-        <Sun className="w-5 h-5" />
-      )}
+      {theme === "light" ? <Moon size={24} /> : <Sun size={24} />}
     </button>
   );
 }
