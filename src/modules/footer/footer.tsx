@@ -13,7 +13,7 @@ import {
   InstagramIcon,
   TwitterIcon,
 } from "@/assets/icons";
-import { Container } from "@/components";
+import { AnimatedSection, Container } from "@/components";
 import { Newsletter } from "@/modules";
 
 export default function Footer() {
@@ -75,9 +75,11 @@ export default function Footer() {
       <Container className="pt-25 pb-22">
         {/* Newsletter Section */}
         <div className="relative">
-          <div className="absolute -top-60 md:-top-50 w-full">
-            <Newsletter />
-          </div>
+          <AnimatedSection delay={0.2}>
+            <div className="absolute -top-60 md:-top-50 w-full">
+              <Newsletter />
+            </div>
+          </AnimatedSection>
         </div>
 
         <div className="mt-20 md:mt-10 lg:mt-20 flex flex-col md:flex-row items-start justify-between gap-10 md:gap-20">

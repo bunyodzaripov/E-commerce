@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Star, StarHalf, Minus, Plus } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import {
-  Container,
+  AnimatedSection,
   Breadcrumb,
+  Container,
   ReviewCard,
   UIButton,
   ProductSkeleton,
@@ -44,7 +46,6 @@ export default function ProductDetail() {
 
   const sizes = ["Small", "Medium", "Large", "X-Large"];
 
-  // Cart add functions
   const addItem = useCartStore((state) => state.addItem);
 
   const handleAddToCart = () => {
@@ -86,14 +87,12 @@ export default function ProductDetail() {
 
   if (!product) return null;
 
-  // Tabs
   const tabs = [
     { id: "product-details", label: t("product_detail.details") },
     { id: "reviews", label: t("product_detail.reviews") },
     { id: "faqs", label: t("product_detail.faqs") },
   ];
 
-  // Product Specs
   const productSpecs = [
     { label: t("details_info.brand"), value: product.brand },
     { label: t("details_info.category"), value: product.category },
@@ -124,8 +123,13 @@ export default function ProductDetail() {
 
       {/* Product Info */}
       <div className="flex flex-col md:flex-row gap-5 md:gap-10 mt-9">
-        {/* Images */}
-        <div className="flex flex-col-reverse md:flex-row gap-4 md:w-[60%]">
+        {/* Images — chapdan */}
+        <motion.div
+          className="flex flex-col-reverse md:flex-row gap-4 md:w-[60%]"
+          initial={{ opacity: 0, x: -60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           {/* Thumbnails */}
           <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible">
             {product.images?.slice(0, 3).map((img: string, i: number) => (
@@ -149,17 +153,26 @@ export default function ProductDetail() {
 
           {/* Main Image */}
           <div className="flex-1 bg-[#F0EEED] dark:bg-[#1E1E1E] rounded-[20px] overflow-hidden aspect-square">
-            <img
+            <motion.img
+              key={selectedImage}
               src={product.images?.[selectedImage]}
               alt={product.title}
               className="w-full h-full object-contain"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
             />
           </div>
-        </div>
+        </motion.div>
 
-        {/* Details */}
-        <div className="flex flex-col gap-4 md:w-[40%]">
-          <h1 className="font-display text-2xl md:text-4xl lg:text-[40px] text-foreground uppercase ">
+        {/* Details — o'ngdan */}
+        <motion.div
+          className="flex flex-col gap-4 md:w-[40%]"
+          initial={{ opacity: 0, x: 60 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h1 className="font-display text-2xl md:text-4xl lg:text-[40px] text-foreground uppercase">
             {product.title}
           </h1>
 
@@ -245,84 +258,103 @@ export default function ProductDetail() {
               {t("product_detail.add_to_cart")}
             </UIButton>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      {/* Tabs */}
-      <div className="mt-14 md:mt-20">
-        <Tabs defaultValue="reviews">
-          <TabsList className="w-full border-b border-gray-200 dark:border-gray-800 bg-transparent rounded-none h-auto">
-            {tabs.map((tab) => (
-              <TabsTrigger
-                key={tab.id}
-                value={tab.id}
-                className="py-4 text-sm md:text-base text-gray-400 dark:text-gray-300 rounded-full"
-              >
-                {tab.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {/* Product Details Tab */}
-          <TabsContent value="product-details" className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {productSpecs.map(({ label, value }) => (
-                <div
-                  key={label}
-                  className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-2xl px-5 py-4"
+      {/* Tabs — pastdan */}
+      <AnimatedSection delay={0.3}>
+        <div className="mt-14 md:mt-20">
+          <Tabs defaultValue="reviews">
+            <TabsList className="w-full border-b border-gray-200 dark:border-gray-800 bg-transparent rounded-none h-auto">
+              {tabs.map((tab) => (
+                <TabsTrigger
+                  key={tab.id}
+                  value={tab.id}
+                  className="py-4 text-sm md:text-base text-gray-400 dark:text-gray-300 rounded-full"
                 >
-                  <span className="text-sm text-gray-400 dark:text-gray-500">
-                    {label}
-                  </span>
-                  <span className="text-sm font-semibold text-foreground">
-                    {value}
-                  </span>
-                </div>
+                  {tab.label}
+                </TabsTrigger>
               ))}
-            </div>
-          </TabsContent>
+            </TabsList>
 
-          {/* Reviews Tab */}
-          <TabsContent value="reviews" className="mt-6">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-xl font-bold text-foreground">
-                {t("product_detail.reviews_title")}{" "}
-                <span className="text-gray-400 dark:text-gray-500 font-normal text-base">
-                  ({product.reviews?.length})
-                </span>
-              </h3>
-              <Button className="rounded-full bg-foreground text-background hover:bg-gray-900 dark:hover:bg-gray-200 text-sm px-6">
-                {t("product_detail.write_review")}
-              </Button>
-            </div>
+            {/* Product Details Tab */}
+            <TabsContent value="product-details" className="mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {productSpecs.map(({ label, value }) => (
+                  <div
+                    key={label}
+                    className="flex items-center justify-between bg-gray-50 dark:bg-gray-800 rounded-2xl px-5 py-4"
+                  >
+                    <span className="text-sm text-gray-400 dark:text-gray-500">
+                      {label}
+                    </span>
+                    <span className="text-sm font-semibold text-foreground">
+                      {value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </TabsContent>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-              {visibleReviews?.map((review: Review, i: number) => (
-                <ReviewCard key={i} review={review} />
-              ))}
-            </div>
-
-            {product.reviews?.length > 6 && (
-              <div className="flex justify-center mt-8">
-                <Button
-                  variant="outline"
-                  className="rounded-full px-10"
-                  onClick={() => setShowAllReviews(!showAllReviews)}
-                >
-                  {showAllReviews ? "Show Less" : "Load More Reviews"}
+            {/* Reviews Tab */}
+            <TabsContent value="reviews" className="mt-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-xl font-bold text-foreground">
+                  {t("product_detail.reviews_title")}{" "}
+                  <span className="text-gray-400 dark:text-gray-500 font-normal text-base">
+                    ({product.reviews?.length})
+                  </span>
+                </h3>
+                <Button className="rounded-full bg-foreground text-background hover:bg-gray-900 dark:hover:bg-gray-200 text-sm px-6">
+                  {t("product_detail.write_review")}
                 </Button>
               </div>
-            )}
-          </TabsContent>
 
-          {/* FAQs Tab */}
-          <TabsContent value="faqs" className="mt-6">
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              {t("product_detail.no_faq")}
-            </p>
-          </TabsContent>
-        </Tabs>
-      </div>
+              {/* Reviews — stagger */}
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                variants={{
+                  animate: { transition: { staggerChildren: 0.08 } },
+                }}
+                initial="initial"
+                animate="animate"
+              >
+                {visibleReviews?.map((review: Review, i: number) => (
+                  <motion.div
+                    key={i}
+                    variants={{
+                      initial: { opacity: 0, y: 20 },
+                      animate: { opacity: 1, y: 0 },
+                    }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <ReviewCard review={review} />
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              {product.reviews?.length > 6 && (
+                <div className="flex justify-center mt-8">
+                  <Button
+                    variant="outline"
+                    className="rounded-full px-10"
+                    onClick={() => setShowAllReviews(!showAllReviews)}
+                  >
+                    {showAllReviews ? "Show Less" : "Load More Reviews"}
+                  </Button>
+                </div>
+              )}
+            </TabsContent>
+
+            {/* FAQs Tab */}
+            <TabsContent value="faqs" className="mt-6">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                {t("product_detail.no_faq")}
+              </p>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </AnimatedSection>
     </Container>
   );
 }

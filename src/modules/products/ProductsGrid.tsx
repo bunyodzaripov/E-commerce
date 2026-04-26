@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Sliders } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
+  AnimatedCard,
+  AnimatedSection,
   Breadcrumb,
   Container,
   EmptyState,
@@ -15,6 +17,7 @@ import type { Product } from "@/@types";
 import { FilterSidebar } from "@/modules";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 const LIMIT = 9;
 
@@ -64,7 +67,9 @@ export default function ProductsGrid() {
       <div className="flex gap-6 mt-6">
         {/* Sidebar — Mobile hidden */}
         <aside className="hidden md:block w-[30%]">
-          <FilterSidebar filters={filters} onChange={setFilters} />
+          <AnimatedSection direction="left" delay={0.2}>
+            <FilterSidebar filters={filters} onChange={setFilters} />
+          </AnimatedSection>
         </aside>
 
         {/* Right: Products */}
@@ -122,11 +127,19 @@ export default function ProductsGrid() {
           ) : products.length === 0 ? (
             <EmptyState />
           ) : (
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <motion.div
+              key={currentPage}
+              className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+              variants={{ animate: { transition: { staggerChildren: 0.1 } } }}
+              initial="initial"
+              animate="animate"
+            >
               {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <AnimatedCard key={product.id}>
+                  <ProductCard product={product} />
+                </AnimatedCard>
               ))}
-            </div>
+            </motion.div>
           )}
 
           {/* Pagination */}

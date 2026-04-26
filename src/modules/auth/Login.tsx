@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, ShoppingBag } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -15,7 +16,6 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // name atributi tarjima qilinmasligi kerak, aks holda state yangilanmaydi
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -35,8 +35,13 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* Left Side: Banner (Hidden on mobile) */}
-      <div className="hidden md:flex w-1/2 bg-foreground flex-col justify-between p-12">
+      {/* Left Side — chapdan chiqadi */}
+      <motion.div
+        className="hidden md:flex w-1/2 bg-foreground flex-col justify-between p-12"
+        initial={{ opacity: 0, x: -80 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <Link to="/" className="flex items-center gap-2 w-fit">
           <ShoppingBag className="w-6 h-6 text-background" />
           <span className="text-background text-2xl font-bold uppercase tracking-tight">
@@ -44,31 +49,52 @@ export default function LoginPage() {
           </span>
         </Link>
 
-        <div className="flex flex-col gap-6">
+        <motion.div
+          className="flex flex-col gap-6"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
           <h1 className="font-display text-5xl font-bold text-background uppercase leading-tight text-balance">
             {t("hero.title")}
           </h1>
           <p className="text-gray-400 dark:text-gray-500 text-sm leading-relaxed max-w-md">
             {t("hero.description")}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="flex gap-8">
-          {stats.map((stat) => (
-            <div key={stat.label} className="flex flex-col">
+        <motion.div
+          className="flex gap-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              className="flex flex-col"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.6 + i * 0.1 }}
+            >
               <span className="text-background text-2xl font-bold">
                 {stat.value}
               </span>
               <span className="text-gray-500 dark:text-gray-400 text-xs">
                 {stat.label}
               </span>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      {/* Right Side: Login Form */}
-      <div className="flex-1 flex items-center justify-center px-6 md:px-16 bg-background">
+      {/* Right Side — o'ngdan chiqadi */}
+      <motion.div
+        className="flex-1 flex items-center justify-center px-6 md:px-16 bg-background"
+        initial={{ opacity: 0, x: 80 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="w-full max-w-md flex flex-col gap-8">
           <Link to="/" className="flex md:hidden items-center gap-2 mb-4">
             <ShoppingBag className="w-5 h-5 text-foreground" />
@@ -77,23 +103,35 @@ export default function LoginPage() {
             </span>
           </Link>
 
-          <div className="flex flex-col gap-2">
+          {/* Header */}
+          <motion.div
+            className="flex flex-col gap-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground uppercase">
               {t("auth.login_title")}
             </h2>
             <p className="text-sm text-gray-400 dark:text-gray-500">
               {t("auth.login_subtitle")}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="flex flex-col gap-4">
+          {/* Form */}
+          <motion.div
+            className="flex flex-col gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             {/* Username */}
             <div className="flex flex-col gap-2">
               <label className="text-sm font-medium text-foreground">
                 {t("auth.username_label")}
               </label>
               <Input
-                name="username" // Name statik qolishi shart
+                name="username"
                 placeholder={t("auth.username_placeholder")}
                 value={form.username}
                 onChange={handleChange}
@@ -108,7 +146,7 @@ export default function LoginPage() {
               </label>
               <div className="relative">
                 <Input
-                  name="password" // Name statik qolishi shart
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder={t("auth.password_placeholder")}
                   value={form.password}
@@ -130,7 +168,6 @@ export default function LoginPage() {
               </div>
             </div>
 
-            {/* Login button */}
             <Button
               onClick={handleLogin}
               disabled={isPending}
@@ -138,10 +175,15 @@ export default function LoginPage() {
             >
               {isPending ? t("auth.logging_in") : t("auth.login_button")}
             </Button>
-          </div>
+          </motion.div>
 
           {/* Demo credentials */}
-          <div className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-4 flex flex-col gap-1">
+          <motion.div
+            className="bg-gray-50 dark:bg-gray-900 rounded-2xl p-4 flex flex-col gap-1"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
             <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
               {t("auth.demo_title")}
             </p>
@@ -153,9 +195,9 @@ export default function LoginPage() {
               {t("auth.password_label")}:{" "}
               <span className="font-semibold text-foreground">emilyspass</span>
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

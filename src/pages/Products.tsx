@@ -1,9 +1,12 @@
+import { AnimatedSection } from "@/components";
 import { ProductsGrid } from "@/modules";
 
 const Products = () => {
   return (
     <>
-      <ProductsGrid />
+      <AnimatedSection>
+        <ProductsGrid />
+      </AnimatedSection>
     </>
   );
 };

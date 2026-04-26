@@ -17,6 +17,8 @@ import EmptyState from "./common/EmptyState";
 import { ErrorBoundary } from "./common/ErrorBoundary";
 import PageLoader from "./common/PageLoader";
 import LangLayout from "./common/LangLayout";
+import AnimatedSection from "./common/AnimatedSection";
+import AnimatedCard from "./common/AnimatedCard";
 
 export {
   PATHS,
@@ -38,4 +40,6 @@ export {
   ErrorBoundary,
   PageLoader,
   LangLayout,
+  AnimatedSection,
+  AnimatedCard,
 };
