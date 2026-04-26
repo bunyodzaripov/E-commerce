@@ -25,7 +25,9 @@ export default function CartPage() {
     <Container className="py-4 md:py-6">
       <hr className="border-t border-gray-200 dark:border-gray-800 mb-6" />
 
-      <Breadcrumb items={[{ label: "Home", href: "/" }, { label: "Cart" }]} />
+      <Breadcrumb
+        items={[{ label: "Home", href: `/${lang}` }, { label: "Cart" }]}
+      />
 
       {/* Sarlavha */}
       <motion.h1

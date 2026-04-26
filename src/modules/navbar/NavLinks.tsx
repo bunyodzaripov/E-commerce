@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import {
@@ -18,6 +18,24 @@ const categories = [
 const NavLinks = () => {
   const { lang } = useParams<{ lang: string }>();
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleScrollLink = (id: string) => {
+    const isHome =
+      location.pathname === `/${lang}` || location.pathname === `/${lang}/`;
+
+    if (isHome) {
+      // Home page da — to'g'ridan scroll
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      // Boshqa sahifadan — home ga o'tib scroll
+      navigate(`/${lang ?? "en"}`);
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 500);
+    }
+  };
 
   return (
     <nav className="hidden md:flex items-center gap-6">
@@ -39,19 +57,19 @@ const NavLinks = () => {
         </DropdownMenuContent>
       </DropdownMenu>
 
-      <a
-        href="#top-selling"
-        className="text-foreground font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-opacity"
+      <button
+        onClick={() => handleScrollLink("top-selling")}
+        className="cursor-pointer text-foreground font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-opacity"
       >
         {t("nav.on_sale")}
-      </a>
+      </button>
 
-      <a
-        href="#new-arrivals"
-        className="text-foreground font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-opacity"
+      <button
+        onClick={() => handleScrollLink("new-arrivals")}
+        className="cursor-pointer text-foreground font-medium hover:text-gray-600 dark:hover:text-gray-400 transition-opacity"
       >
         {t("nav.new_arrivals")}
-      </a>
+      </button>
 
       <Link
         to={`/${lang ?? "en"}/products`}

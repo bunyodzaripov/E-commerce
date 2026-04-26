@@ -35,7 +35,7 @@ function RatingStars({ rating }: { rating: number }) {
 
 // ---- Main ----
 export default function ProductDetail() {
-  const { id } = useParams<{ id: string }>();
+  const { id, lang } = useParams<{ id: string; lang: string }>();
   const { data: product, isLoading } = useGetProductDetails(Number(id));
   const { t } = useTranslation();
 
@@ -114,9 +114,12 @@ export default function ProductDetail() {
       {/* Breadcrumb */}
       <Breadcrumb
         items={[
-          { label: "Home", href: "/" },
-          { label: "Products", href: "/products" },
-          { label: product.category, href: `/products/${product.category}` },
+          { label: "Home", href: `/${lang}` },
+          { label: "Products", href: `/${lang}/products` },
+          {
+            label: product.category,
+            href: `/${lang}/products/${product.category}`,
+          },
           { label: product.title },
         ]}
       />

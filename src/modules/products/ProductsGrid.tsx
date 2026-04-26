@@ -33,7 +33,7 @@ export default function ProductsGrid() {
     sizes: [] as string[],
     dressStyles: [] as string[],
   });
-  const { category } = useParams<{ category: string }>();
+  const { category, lang } = useParams<{ category: string; lang: string }>();
 
   // get all products
   const { data, isLoading } = useGetProducts({
@@ -61,7 +61,7 @@ export default function ProductsGrid() {
 
       {/* Breadcrumb */}
       <Breadcrumb
-        items={[{ label: "Home", href: "/" }, { label: categoryName }]}
+        items={[{ label: "Home", href: `/${lang}` }, { label: categoryName }]}
       />
 
       <div className="flex gap-6 mt-6">
